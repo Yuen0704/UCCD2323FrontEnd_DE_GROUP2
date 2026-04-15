@@ -1,0 +1,262 @@
+/*
+ * favourite.css
+ * =============
+ * Styles ONLY for favourite.html.
+ * CSS variables (--red, --bg, --text, etc.) come from games.css
+ * which is already linked before this file.
+ */
+
+/* ===== HERO ===== */
+.fav-hero {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 60%, #2d0005 100%);
+  color: white;
+  padding: 80px 20px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle red glow pattern — same style as your games hero */
+.fav-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(230,0,18,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(230,0,18,0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.fav-hero-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 14px;
+}
+
+.fav-hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.fav-hero-accent { color: var(--red); }
+
+.fav-hero-sub {
+  font-size: 1rem;
+  color: #bbb;
+}
+
+/* ===== ACTION BAR ===== */
+.fav-action-bar {
+  background: var(--bg-alt, #fff);
+  border-bottom: 1px solid var(--border-light, #f0f0f0);
+  padding: 14px 0;
+  transition: background 0.3s ease;
+}
+
+.fav-count-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted, #666);
+}
+
+/* ===== SECTION ===== */
+.fav-section {
+  padding: 60px 0 80px;
+  background: var(--bg, #f5f5f7);
+  transition: background 0.3s ease;
+}
+
+/* ===== FAVOURITE CARD ===== */
+.fav-card {
+  background: var(--bg-card, #fff);
+  border: 1px solid var(--border-light, #f0f0f0);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px var(--shadow, rgba(0,0,0,0.08));
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.fav-card:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 20px 50px var(--shadow-hover, rgba(230,0,18,0.15));
+  border-color: var(--red);
+}
+
+/* red top border appears on hover — same trick as your game-card */
+.fav-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--red), #ff6b6b);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+.fav-card:hover::before { opacity: 1; }
+
+.fav-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.fav-card:hover .fav-card-img { transform: scale(1.05); }
+
+.fav-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.fav-card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  color: var(--text, #1a1a1a);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+/* meta row: genre badge + rating */
+.fav-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.fav-genre-badge {
+  background: linear-gradient(135deg, var(--red), #ff6b6b);
+  color: white;
+  padding: 3px 11px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.fav-rating-badge {
+  background: var(--red-soft, #fff0f1);
+  color: var(--red);
+  padding: 3px 11px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+[data-theme="dark"] .fav-rating-badge { background: rgba(230,0,18,0.12); }
+
+/* price row */
+.fav-price-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.fav-sale-badge {
+  background: var(--red);
+  color: white;
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* ===== BUTTON GROUP ===== */
+.fav-btn-group {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+/* Add to Cart button */
+.fav-cart-btn {
+  flex: 1;
+  background: linear-gradient(135deg, var(--red), #ff6b6b);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 9px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+.fav-cart-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #c90010, #e05555);
+  transform: translateY(-1px);
+}
+.fav-cart-btn:disabled {
+  background: var(--border, #e0e0e0);
+  color: var(--text-light, #999);
+  cursor: not-allowed;
+}
+
+/* Details link */
+.fav-details-btn {
+  border: 2px solid var(--border, #e0e0e0);
+  background: transparent;
+  color: var(--text-muted, #666);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 9px 12px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+.fav-details-btn:hover { border-color: var(--red); color: var(--red); }
+
+/* Remove button */
+.fav-remove-btn {
+  background: transparent;
+  border: 2px solid var(--border, #e0e0e0);
+  color: var(--text-muted, #666);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 9px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+.fav-remove-btn:hover { border-color: var(--red); color: var(--red); background: var(--red-soft, #fff0f1); }
+
+/* .btn-nintendo already exists in your games.css */
+
+/* ===== EMPTY STATE ===== */
+/* .empty-state styles are injected by shared.js */
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .fav-hero { padding: 60px 20px; }
+  .fav-hero-title { font-size: 3rem; }
+  .fav-btn-group { flex-direction: column; }
+  .fav-cart-btn, .fav-details-btn, .fav-remove-btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 576px) {
+  .fav-hero-title { font-size: 2.4rem; }
+  .fav-card-body { padding: 14px; }
+}

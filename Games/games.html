@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nintendo Games</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../Shared/shared.css">
+  <link rel="stylesheet" href="../Games/games.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg custom-navbar shadow-sm">
+    <div class="container">
+
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="../Home/index.html">
+        <img src="../Shared/images/logo.png" alt="Nintendo Logo" width="40" height="40" class="me-2">
+        Nintendo
+      </a>
+
+      <div class="ms-auto d-flex align-items-center gap-2 me-2">
+
+        <a href="../Favourite/favourite.html" class="nav-icon-btn" title="My Favourites">
+          <i class="bi bi-heart-fill"></i>
+          <span class="nav-badge fav-badge-count" style="display:none;">0</span>
+        </a>
+
+        <a href="../Cart/cart.html" class="nav-icon-btn" title="My Cart">
+          <i class="bi bi-cart-fill"></i>
+          <span class="nav-badge cart-badge-count" style="display:none;">0</span>
+        </a>
+
+        <button id="darkModeToggle" class="dark-toggle" title="Toggle Dark Mode">
+          <i class="bi bi-moon-fill" id="themeIcon"></i>
+        </button>
+
+        <button id="authNavBtn" class="ms-1"></button>
+
+        <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="../Home/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../About/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Consoles/consoles.html">Consoles</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Accessories/accessories.html">Accessories</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../Games/games.html">Games</a></li>
+          <li class="nav-item"><a class="nav-link" href="../News/news.html">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Contact/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ===== HERO with VIDEO BACKGROUND ===== -->
+  <header class="games-hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="../Games/images/video.mp4" type="video/mp4">
+      <!-- If video is missing, the CSS gradient background shows instead -->
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="container text-center position-relative" style="z-index:2;">
+      <div class="hero-eyebrow">Nintendo Switch Collection</div>
+      <h1 class="hero-title">EXPLORE<br><span class="hero-accent">GAMES</span></h1>
+      <p class="hero-subtitle">Discover your next favorite Nintendo adventure</p>
+      <div class="hero-stats">
+        <div class="stat-pill"><i class="bi bi-controller"></i> <span id="totalGamesCount">6</span> Games</div>
+        <div class="stat-pill"><i class="bi bi-star-fill"></i> Top Rated Titles</div>
+        <div class="stat-pill"><i class="bi bi-fire"></i> New Releases</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== TOP RATED (skeleton cards replaced by JS after 900ms) ===== -->
+  <section class="top-rated-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge"><i class="bi bi-fire"></i> Hot Picks</div>
+        <h2 class="section-title">Top Rated Games</h2>
+        <p class="section-sub">Our highest-acclaimed Nintendo titles</p>
+      </div>
+      <div class="row g-4" id="topRatedContainer">
+        <div class="col-lg-4 col-md-6">
+          <div class="skeleton-card"></div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="skeleton-card"></div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="skeleton-card"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEW RELEASES (skeleton cards replaced by JS after 1200ms) ===== -->
+  <section class="new-releases-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge new-badge"><i class="bi bi-stars"></i> Fresh</div>
+        <h2 class="section-title">New Releases</h2>
+        <p class="section-sub">Latest Nintendo titles to hit the shelves</p>
+      </div>
+      <div class="row g-4" id="newReleasesContainer">
+        <div class="col-lg-4 col-md-6">
+          <div class="skeleton-card"></div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="skeleton-card"></div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="skeleton-card"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FILTER BAR ===== -->
+  <section class="filter-section" id="allGames">
+    <div class="container">
+      <div class="row g-3 align-items-end justify-content-center">
+        <div class="col-lg-4 col-md-6">
+          <label for="searchInput" class="form-label fw-bold">Search Games</label>
+          <div class="search-wrapper">
+            <i class="bi bi-search search-icon"></i>
+            <input type="text" id="searchInput" class="form-control search-box" placeholder="Search by title...">
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <label for="genreFilter" class="form-label fw-bold">Genre</label>
+          <select id="genreFilter" class="form-select genre-box">
+            <option value="All">All Genres</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Party">Party</option>
+            <option value="Simulation">Simulation</option>
+            <option value="Sports">Sports</option>
+            <option value="Platformer">Platformer</option>
+            <option value="Puzzle">Puzzle</option>
+          </select>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <label for="sortFilter" class="form-label fw-bold">Sort By</label>
+          <select id="sortFilter" class="form-select genre-box">
+            <option value="default">Default</option>
+            <option value="rating-desc">Rating: High → Low</option>
+            <option value="rating-asc">Rating: Low → High</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="year-desc">Year: Newest First</option>
+            <option value="year-asc">Year: Oldest First</option>
+          </select>
+        </div>
+        <div class="col-lg-2 col-md-6 text-center">
+          <div class="counter-pill">
+            <span id="resultCount" class="counter-num">0</span>
+            <span class="counter-label">games</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ALL GAME CARDS (injected by games.js) ===== -->
+  <section class="games-section">
+    <div class="container">
+      <div class="section-header mb-4">
+        <h2 class="section-title">All Games</h2>
+      </div>
+      <div class="row g-4" id="gameContainer"></div>
+    </div>
+  </section>
+
+  <!-- ===== RECENTLY VIEWED (shown only when list is not empty) ===== -->
+  <section class="recently-viewed-section" id="recentlyViewedSection" style="display:none;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge recent-badge"><i class="bi bi-clock-history"></i> History</div>
+        <h2 class="section-title">Recently Viewed</h2>
+      </div>
+      <div class="row g-3" id="recentlyViewedContainer"></div>
+    </div>
+  </section>
+
+  <!-- ===== QUICK VIEW MODAL ===== -->
+  <div class="modal fade" id="quickViewModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content qv-modal">
+        <button type="button" class="qv-close" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+        <div class="row g-0">
+          <div class="col-md-5">
+            <div class="qv-image-wrap">
+              <img id="qvImage" src="" alt="" class="qv-image">
+              <div class="qv-genre-badge" id="qvGenre"></div>
+            </div>
+          </div>
+          <div class="col-md-7 d-flex flex-column">
+            <div class="qv-body">
+              <h2 class="qv-title" id="qvTitle"></h2>
+              <div class="qv-stars mb-2" id="qvStars"></div>
+              <div class="qv-meta mb-2">
+                <span class="qv-meta-item"><i class="bi bi-calendar3"></i> <span id="qvYear"></span></span>
+                <span class="qv-meta-item"><i class="bi bi-star-fill"></i> <span id="qvRating"></span>/5</span>
+              </div>
+              <div class="qv-price mb-3" id="qvPrice"></div>
+              <p class="qv-desc" id="qvDesc"></p>
+              <div class="d-flex gap-2 flex-wrap">
+                <a id="qvDetailsLink" href="#" class="btn btn-nintendo flex-grow-1">
+                  <i class="bi bi-info-circle me-1"></i>Details
+                </a>
+                <button id="qvCartBtn" class="btn btn-outline-nintendo flex-grow-1">
+                  <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== COMPARE MODAL ===== -->
+  <div class="modal fade" id="compareModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content qv-modal">
+        <button type="button" class="qv-close" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+        <div class="p-4">
+          <h2 class="section-title mb-1">Game Comparison</h2>
+          <p class="text-muted mb-4" style="font-size:0.82rem;">
+            <i class="bi bi-info-circle me-1"></i>Compare list stored in
+            <strong>sessionStorage</strong> — resets when you close this tab.
+          </p>
+          <div class="row g-4" id="compareContainer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== COMPARE BAR (fixed bottom bar when comparing) ===== -->
+  <div id="compareBar" class="compare-bar" style="display:none;">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap gap-3">
+      <div class="d-flex align-items-center gap-3">
+        <i class="bi bi-bar-chart-fill text-nintendo fs-4"></i>
+        <span class="fw-bold">Compare: <span id="compareCount">0</span>/2 selected</span>
+        <div id="compareNames" class="d-flex gap-2 flex-wrap"></div>
+      </div>
+      <div class="d-flex gap-2">
+        <button id="compareBtn" class="btn btn-nintendo btn-sm" disabled>
+          <i class="bi bi-arrow-left-right me-1"></i>Compare
+        </button>
+        <button id="clearCompare" class="btn btn-outline-secondary btn-sm">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== AUTH MODAL (login / sign up) ===== -->
+  <div id="authModal" class="auth-modal-overlay">
+    <div class="auth-modal-box">
+      <button class="auth-modal-close" id="closeAuthModal"><i class="bi bi-x-lg"></i></button>
+
+      <div id="loginBox">
+        <div class="auth-form-title">LOGIN</div>
+        <form id="loginForm">
+          <div class="auth-group">
+            <label>Username</label>
+            <input type="text" id="loginUsername" placeholder="Enter username" required>
+          </div>
+          <div class="auth-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter password" required>
+          </div>
+          <button type="submit" class="auth-submit">Sign In</button>
+        </form>
+        <div class="auth-switch">No account? <a href="#" id="showSignup">Sign up</a></div>
+      </div>
+
+      <div id="signupBox" style="display:none;">
+        <div class="auth-form-title">SIGN UP</div>
+        <form id="signupForm">
+          <div class="auth-group">
+            <label>Username</label>
+            <input type="text" id="signupUsername" placeholder="Choose a username" required>
+          </div>
+          <div class="auth-group">
+            <label>Password</label>
+            <input type="password" id="signupPassword" placeholder="Create a password" required>
+          </div>
+          <div class="auth-group">
+            <label>Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Repeat password" required>
+          </div>
+          <button type="submit" class="auth-submit">Create Account</button>
+        </form>
+        <div class="auth-switch">Have an account? <a href="#" id="showLogin">Login</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="custom-footer mt-5">
+    <div class="container-fluid footer-top px-5">
+      <div class="row gy-4 justify-content-between">
+        <div class="col-lg-4 col-md-12">
+          <div class="footer-brand d-flex align-items-center mb-3">
+            <img src="../Shared/images/logo.png" alt="Nintendo Logo" width="50" height="50" class="me-2">
+            <h3 class="mb-0">NINTENDO</h3>
+          </div>
+          <p class="footer-text">
+            Bringing smiles to faces around the world through dedicated gaming experiences and beloved characters.
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-heading">NAVIGATE</h5>
+          <ul class="footer-links">
+            <li><a href="../Home/index.html">Home Page</a></li>
+            <li><a href="../Consoles/consoles.html">Consoles</a></li>
+            <li><a href="../Accessories/accessories.html">Accessories</a></li>
+            <li><a href="../Games/games.html">All Games</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-heading">OTHERS</h5>
+          <ul class="footer-links">
+            <li><a href="../News/news.html">Latest News</a></li>
+            <li><a href="../Contact/contact.html">Contact Us</a></li>
+            <li><a href="../Favourite/favourite.html">My Favourite</a></li>
+            <li><a href="../Cart/cart.html">My Cart</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-12">
+                    <h5 class="footer-heading">CONNECT</h5>
+                    <div class="social-icons">
+                        <a href="https://x.com/NintendoAmerica" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="https://www.instagram.com/nintendoamerica/" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.youtube.com/c/nintendo" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="https://discord.com/invite/nintendo" title="Discord"><i class="bi bi-discord"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">© 2026 Nintendo Website Project</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="https://www.nintendo.com/us/terms-of-use/?srsltid=AfmBOorfR5Cqtw0SzZcCsMF5edbvEN6H8uKee9dxSR7cEiwUHdr1m0Hb" class="bottom-link">Terms of Service</a>
+                    <span class="mx-2">|</span>
+                    <a href="https://www.nintendo.com/us/privacy-policy/" class="bottom-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- shared.js MUST load before games.js (provides updateBadges, showToast, auth) -->
+  <script src="../Shared/shared.js"></script>
+  <!-- Games page JS -->
+  <script src="../Games/games.js"></script>
+
+</body>
+
+</html>

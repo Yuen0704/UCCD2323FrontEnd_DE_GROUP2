@@ -1,0 +1,243 @@
+/*
+ * cart.css
+ * ========
+ * Styles ONLY for cart.html.
+ * CSS variables come from games.css which is linked before this file.
+ */
+
+/* ===== HERO ===== */
+.cart-hero {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 60%, #2d0005 100%);
+  color: white;
+  padding: 80px 20px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cart-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 15% 50%, rgba(230,0,18,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 85% 20%, rgba(230,0,18,0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+.cart-hero-eyebrow {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+}
+.cart-hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 9vw, 6rem); line-height: 1; margin-bottom: 14px;
+}
+.cart-hero-accent { color: var(--red); }
+.cart-hero-sub { font-size: 1rem; color: #bbb; }
+
+/* ===== SECTION ===== */
+.cart-section {
+  padding: 60px 0 80px;
+  background: var(--bg, #f5f5f7);
+  transition: background 0.3s ease;
+}
+
+/* ===== CART TABLE BOX ===== */
+.cart-table-box {
+  background: var(--bg-card, #fff);
+  border: 1px solid var(--border-light, #f0f0f0);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px var(--shadow, rgba(0,0,0,0.08));
+}
+
+/* Table header row */
+.cart-table-head {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 0.4fr;
+  gap: 10px;
+  padding: 14px 20px;
+  background: var(--bg-alt, #fff);
+  border-bottom: 2px solid var(--red);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted, #666);
+}
+
+/* Each cart item row */
+.cart-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 0.4fr;
+  gap: 10px;
+  padding: 16px 20px;
+  align-items: center;
+  border-bottom: 1px solid var(--border-light, #f0f0f0);
+  transition: background 0.2s ease;
+}
+.cart-row:last-child { border-bottom: none; }
+.cart-row:hover { background: var(--bg-alt, #fafafa); }
+
+/* Game name + thumbnail */
+.cart-game-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cart-game-thumb {
+  width: 70px; height: 55px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.cart-game-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text, #1a1a1a);
+  line-height: 1.3;
+}
+.cart-game-unit {
+  font-size: 0.75rem;
+  color: var(--text-light, #999);
+  margin-top: 2px;
+}
+
+.cart-price-cell {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text, #1a1a1a);
+}
+
+.cart-subtotal-cell {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--red);
+}
+
+/* Quantity stepper */
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.qty-btn {
+  width: 28px; height: 28px;
+  background: var(--bg-alt, #f0f0f0);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 6px;
+  font-size: 1rem; font-weight: 700;
+  color: var(--text, #1a1a1a);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+.qty-btn:hover { background: var(--red); color: white; border-color: var(--red); }
+.qty-value {
+  font-weight: 800;
+  font-size: 1rem;
+  min-width: 22px;
+  text-align: center;
+  color: var(--text, #1a1a1a);
+}
+
+/* Remove button */
+.cart-remove-btn {
+  background: none; border: none;
+  color: var(--text-light, #bbb);
+  font-size: 1.1rem; cursor: pointer;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.cart-remove-btn:hover { color: var(--red); background: var(--red-soft, #fff0f1); }
+
+/* ===== ORDER SUMMARY ===== */
+.cart-summary {
+  background: var(--bg-card, #fff);
+  border: 1px solid var(--border-light, #f0f0f0);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px var(--shadow, rgba(0,0,0,0.08));
+  position: sticky;
+  top: 90px;
+}
+
+.summary-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem; letter-spacing: 2px;
+  color: var(--text, #1a1a1a); margin-bottom: 0;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--red);
+  margin-bottom: 16px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border-light, #f0f0f0);
+  font-size: 0.92rem;
+  color: var(--text-muted, #666);
+  font-weight: 600;
+}
+.summary-line:last-of-type { border-bottom: none; }
+
+.summary-total-line {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text, #1a1a1a);
+  padding-top: 14px;
+  border-top: 2px solid var(--border-light, #f0f0f0);
+  margin-top: 4px;
+}
+.summary-total-line span:last-child {
+  color: var(--red);
+  font-size: 1.3rem;
+}
+
+/* Checkout button */
+.checkout-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--red), #ff6b6b);
+  color: white; border: none; border-radius: 12px;
+  font-weight: 800; font-size: 1rem;
+  padding: 15px 0; margin-top: 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(230,0,18,0.25);
+}
+.checkout-btn:hover {
+  background: linear-gradient(135deg, #c90010, #e05555);
+  transform: translateY(-2px);
+}
+
+.checkout-note {
+  text-align: center;
+  font-size: 0.76rem;
+  color: var(--text-light, #bbb);
+  margin-top: 12px; margin-bottom: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  /* Hide table header, stack items vertically */
+  .cart-table-head { display: none; }
+  .cart-hero { padding: 60px 20px; }
+  .cart-hero-title { font-size: 3rem; }
+  .cart-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 16px;
+  }
+  .cart-subtotal-cell::before {
+    content: "Subtotal: ";
+    font-weight: 600;
+    color: var(--text-muted, #666);
+  }
+}
+
+@media (max-width: 576px) {
+  .cart-hero-title { font-size: 2.4rem; }
+}

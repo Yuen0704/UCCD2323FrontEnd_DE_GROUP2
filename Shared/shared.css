@@ -1,0 +1,609 @@
+/*
+=======================================================
+  shared.css — NINTENDO PROJECT SHARED STYLES
+=======================================================
+  Give this file to ALL teammates.
+  Link it in EVERY page <head> like this:
+
+    <link rel="stylesheet" href="shared.css">
+
+  This file contains ONLY the parts shared across pages:
+    1. CSS Variables (colours, dark mode)
+    2. Reset & base body
+    3. Scrollbar
+    4. Navbar
+    5. Dark mode toggle button
+    6. Nav icon buttons (heart, cart) with badge
+    7. Auth button (#authNavBtn)
+    8. Auth modal (login/signup popup)
+    9. Footer
+   10. Shared button styles (.btn-nintendo)
+   11. Animations
+   12. Section headings (.section-title, .section-badge)
+
+  Your teammates should NOT copy from games.css.
+  They only need THIS file + shared.js.
+
+  In their own page CSS they can use the variables:
+    color: var(--red);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+=======================================================
+*/
+
+/* =====================================================
+   1. CSS VARIABLES — light and dark mode
+   These define all colours used across the project.
+   Dark mode activates when <html data-theme="dark">
+   which shared.js sets automatically from localStorage.
+===================================================== */
+:root {
+  /* Brand colour */
+  --red:          #e60012;
+  --red-light:    #ff6b6b;
+  --red-glow:     rgba(230, 0, 18, 0.18);
+  --red-soft:     #fff0f1;
+
+  /* Backgrounds */
+  --bg:           #f5f5f7;   /* page background */
+  --bg-alt:       #ffffff;   /* alternate section background */
+  --bg-card:      #ffffff;   /* card / panel background */
+  --bg-nav:       #ffffff;   /* navbar background */
+  --bg-footer:    #1a1a1a;   /* footer background */
+  --bg-input:     #fafafa;   /* input field background */
+
+  /* Text */
+  --text:         #1a1a1a;   /* main text */
+  --text-muted:   #666666;   /* secondary / grey text */
+  --text-light:   #999999;   /* placeholder / very light text */
+
+  /* Borders & shadows */
+  --border:       #e0e0e0;
+  --border-light: #f0f0f0;
+  --shadow:       rgba(0, 0, 0, 0.08);
+  --shadow-hover: rgba(230, 0, 18, 0.15);
+
+  /* Animation speed */
+  --ease:         0.3s ease;
+  --bounce:       0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Dark mode — toggled by shared.js via data-theme="dark" on <html> */
+[data-theme="dark"] {
+  --bg:           #0f0f0f;
+  --bg-alt:       #1a1a1a;
+  --bg-card:      #1e1e1e;
+  --bg-nav:       #111111;
+  --bg-footer:    #0a0a0a;
+  --bg-input:     #252525;
+  --red-soft:     rgba(230, 0, 18, 0.10);
+
+  --text:         #f0f0f0;
+  --text-muted:   #aaaaaa;
+  --text-light:   #666666;
+  --border:       #333333;
+  --border-light: #2a2a2a;
+  --shadow:       rgba(0, 0, 0, 0.40);
+  --shadow-hover: rgba(230, 0, 18, 0.25);
+}
+
+/* =====================================================
+   2. RESET & BASE
+===================================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  /* smooth colour transition when dark mode toggles */
+  transition: background var(--ease), color var(--ease);
+}
+
+/* =====================================================
+   3. SCROLLBAR
+===================================================== */
+::-webkit-scrollbar         { width: 6px; }
+::-webkit-scrollbar-track   { background: var(--bg); }
+::-webkit-scrollbar-thumb   { background: var(--red); border-radius: 3px; }
+
+/* =====================================================
+   4. NAVBAR
+===================================================== */
+.custom-navbar {
+  background: var(--bg-nav) !important;
+  border-bottom: 2px solid var(--red);
+  box-shadow: 0 4px 20px var(--shadow);
+  padding: 0.5rem 0;
+  /* sticks to top of screen when scrolling */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background var(--ease);
+}
+
+/* Logo / brand text */
+.navbar-brand {
+  color: var(--red) !important;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  transition: transform var(--ease);
+}
+.navbar-brand:hover { transform: scale(1.05); }
+
+/* Nav links */
+.nav-link {
+  font-weight: 600;
+  color: var(--text) !important;
+  margin: 0 8px;
+  transition: all var(--ease);
+  position: relative;
+  font-size: 0.95rem;
+}
+
+/* Red underline animation on hover / active */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--red);
+  transition: width var(--ease);
+  border-radius: 2px;
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+
+.nav-link:hover,
+.nav-link.active { color: var(--red) !important; }
+
+/* =====================================================
+   5. DARK MODE TOGGLE BUTTON
+   Used by: all pages
+   HTML:  <button id="darkModeToggle" class="dark-toggle">
+            <i class="bi bi-moon-fill" id="themeIcon"></i>
+          </button>
+===================================================== */
+.dark-toggle {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  color: var(--text);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--ease);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.dark-toggle:hover {
+  border-color: var(--red);
+  color: var(--red);
+  transform: rotate(20deg);
+}
+
+/* =====================================================
+   6. NAV ICON BUTTONS (heart & cart with badge)
+   Used by: all pages
+   HTML:  <a href="favourite.html" class="nav-icon-btn">
+            <i class="bi bi-heart-fill"></i>
+            <span class="nav-badge fav-badge-count" style="display:none;">0</span>
+          </a>
+   The badge number and visibility is set by shared.js
+   automatically from localStorage on every page load.
+===================================================== */
+.nav-icon-btn {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.25rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all var(--ease);
+  text-decoration: none;
+}
+.nav-icon-btn:hover {
+  color: var(--red);
+  background: rgba(230, 0, 18, 0.08);
+}
+
+/* The red number bubble on top of the icon */
+.nav-badge {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.58rem;
+  font-weight: 800;
+  min-width: 15px;
+  height: 15px;
+  border-radius: 100px;
+  padding: 0 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* =====================================================
+   7. AUTH BUTTON (#authNavBtn)
+   Used by: all pages
+   HTML:  <button id="authNavBtn" class="ms-1"></button>
+   shared.js fills in the text automatically:
+     - Not logged in → "Login"
+     - Logged in     → username from cookie
+===================================================== */
+#authNavBtn {
+  background: var(--red);
+  color: #ffffff !important;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+#authNavBtn:hover {
+  background: #c90010;
+  transform: translateY(-1px);
+}
+
+/* =====================================================
+   8. AUTH MODAL (login / signup popup)
+   Used by: all pages
+   HTML: copy AUTH-MODAL-TEMPLATE.html into your page.
+   shared.js handles open/close/submit automatically.
+===================================================== */
+
+/* Dark overlay behind the modal */
+.auth-modal-overlay {
+  display: none; /* shared.js changes this to "flex" when opened */
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The white/dark modal box */
+.auth-modal-box {
+  background: #1a1a1a;
+  border: 2px solid var(--red);
+  border-radius: 16px;
+  padding: 36px 32px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  color: #ffffff;
+}
+
+/* X close button top-right */
+.auth-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #aaaaaa;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: color var(--ease);
+}
+.auth-modal-close:hover { color: var(--red); }
+
+/* "LOGIN" / "SIGN UP" title inside modal */
+.auth-form-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: var(--red);
+  margin-bottom: 18px;
+}
+
+/* Each label + input pair */
+.auth-group { margin-bottom: 14px; }
+.auth-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #cccccc;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.auth-group input {
+  width: 100%;
+  padding: 11px 13px;
+  background: #111111;
+  border: 1px solid #444444;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.88rem;
+  transition: border-color var(--ease);
+}
+.auth-group input:focus {
+  border-color: var(--red);
+  outline: none;
+}
+
+/* Sign In / Create Account button */
+.auth-submit {
+  width: 100%;
+  padding: 12px;
+  background: var(--red);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background var(--ease);
+}
+.auth-submit:hover { background: #c90010; }
+
+/* "No account? Sign up" toggle link */
+.auth-switch {
+  text-align: center;
+  font-size: 0.82rem;
+  color: #bbbbbb;
+  margin-top: 14px;
+}
+.auth-switch a {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.auth-switch a:hover { color: var(--red); }
+
+/* =====================================================
+   9. FOOTER
+   Used by: all pages
+   HTML: copy FOOTER-TEMPLATE.html into your page.
+===================================================== */
+.custom-footer {
+  background: var(--bg-footer);
+  color: white;
+  border-top: 4px solid var(--red);
+}
+
+.footer-top { padding: 50px 0 40px; }
+
+.custom-footer {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* Nintendo logo + name */
+.footer-brand h3 {
+  color: var(--red);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 3px;
+  font-size: 1.8rem;
+}
+.footer-text {
+  color: #cccccc;
+  line-height: 1.8;
+  max-width: 360px;
+}
+
+/* Column headings (NAVIGATE, OTHERS, CONNECT) */
+.footer-heading {
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  color: white;
+  text-transform: uppercase;
+}
+
+/* Link lists */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  text-decoration: none;
+  color: #bbbbbb;
+  transition: all var(--ease);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.footer-links a:hover {
+  color: var(--red);
+  padding-left: 6px;
+}
+
+/* Social icon buttons */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.social-icons a {
+  width: 46px;
+  height: 46px;
+  border: 2px solid #444444;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbbbbb;
+  text-decoration: none;
+  transition: all var(--ease);
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+.social-icons a:hover {
+  background: var(--red);
+  color: white;
+  border-color: var(--red);
+  transform: translateY(-4px);
+}
+
+/* Copyright bar at the very bottom */
+.footer-bottom {
+  border-top: 1px solid #333333;
+  padding: 24px 0;
+  color: #bbbbbb;
+  font-size: 0.88rem;
+}
+.bottom-link {
+  color: #bbbbbb;
+  text-decoration: none;
+  transition: color var(--ease);
+  font-weight: 500;
+}
+.bottom-link:hover { color: var(--red); }
+
+/* =====================================================
+   10. SHARED BUTTON STYLES
+   .btn-nintendo  → red gradient button (use everywhere)
+===================================================== */
+
+/* Red gradient button — the main action button */
+.btn-nintendo {
+  background: linear-gradient(135deg, var(--red), var(--red-light));
+  color: white !important;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--ease);
+  text-decoration: none;
+}
+.btn-nintendo:hover {
+  background: linear-gradient(135deg, #c90010, #e05555);
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--red-glow);
+}
+
+/* Red outline button — secondary action */
+.btn-outline-nintendo {
+  background: transparent;
+  color: var(--red);
+  border: 2px solid var(--red);
+  border-radius: 10px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--ease);
+  text-decoration: none;
+}
+.btn-outline-nintendo:hover {
+  background: var(--red);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Utility colour class */
+.text-nintendo { color: var(--red) !important; }
+
+/* =====================================================
+   11. SECTION HEADING STYLES
+   Use these classes on your own page for consistent
+   section titles that match the games page.
+===================================================== */
+
+/* Centred header block above a section */
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Big bold heading (uses Bebas Neue font) */
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  color: var(--text);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+/* Small coloured pill label above the title */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--red-soft);
+  color: var(--red);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+[data-theme="dark"] .section-badge {
+  background: rgba(230, 0, 18, 0.12);
+}
+
+/* Subtitle text below section title */
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* =====================================================
+   12. ANIMATIONS
+   .fade-in class — add to any element to animate it in
+===================================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Staggered fade-in for lists/grids */
+.fade-in { animation: fadeUp 0.55s ease forwards; opacity: 0; }
+.fade-in:nth-child(1) { animation-delay: 0.00s; }
+.fade-in:nth-child(2) { animation-delay: 0.08s; }
+.fade-in:nth-child(3) { animation-delay: 0.16s; }
+.fade-in:nth-child(4) { animation-delay: 0.24s; }
+.fade-in:nth-child(5) { animation-delay: 0.32s; }
+.fade-in:nth-child(6) { animation-delay: 0.40s; }
+
+/* =====================================================
+   13. RESPONSIVE — shared breakpoints
+===================================================== */
+@media (max-width: 768px) {
+  .section-title { font-size: 1.9rem; }
+  .footer-top    { padding: 36px 0 24px; }
+}
+
+@media (max-width: 576px) {
+  .section-title { font-size: 1.6rem; }
+}

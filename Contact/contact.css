@@ -1,0 +1,378 @@
+/* ==========================================================================
+   CSS Variables & Reset
+   ========================================================================== */
+:root {
+    --nintendo-red: #E60012;
+    --nintendo-red-dark: #BB000C;
+    --switch-gray: #2D2D2D;
+    --surface: #FAFAF9;
+    --surface-warm: #F5F3F0;
+    --on-surface: #1A1A1A;
+    --on-surface-muted: #6B6B6B;
+    --zinc-50: #fafafa;
+    --zinc-100: #f4f4f5;
+    --zinc-200: #e4e4e7;
+    --zinc-300: #d4d4d4;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-3xl: 1.5rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--surface);
+    color: var(--on-surface);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.5;
+}
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; }
+ul { list-style: none; }
+
+/* ==========================================================================
+   Layout Utilities
+   ========================================================================== */
+main { flex: 1; }
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.dark .standalone-form-card {
+    background-color: #2D2D2D; /* Changes the white card to a dark gray */
+    color: #FFFFFF; /* Now the white text will be visible! */
+}
+
+.section-fluid {
+    padding: clamp(3rem, 6vw, 6rem) 0;
+}
+
+.text-center { text-align: center; }
+.is-hidden { display: none !important; }
+
+.section-title {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 2.5rem;
+}
+
+/* ==========================================================================
+   Animations & Reveals
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+.animate-shake { animation: shake 0.5s ease-in-out; }
+
+/* ==========================================================================
+   Switch Console Layout
+   ========================================================================== */
+.switch-body {
+    background: #2d2d2d;
+    border-radius: 2rem;
+    position: relative;
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.25), inset 0 0 0 1px rgba(255,255,255,0.05);
+    display: flex;
+    min-height: 560px;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.joycon {
+    width: 7rem;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem 0;
+}
+
+.joycon-l { background: linear-gradient(135deg, #00C8E8, #00A6DE); border-radius: 2rem 0 0 2rem; }
+.joycon-r { background: linear-gradient(135deg, #FF5A4D, #FF3C28); border-radius: 0 2rem 2rem 0; }
+
+.switch-screen {
+    flex: 1;
+    background: #111;
+    padding: 1rem;
+}
+
+.switch-screen-inner {
+    background: #fff;
+    height: 100%;
+    border-radius: 1rem;
+    padding: 2.5rem;
+    overflow-y: auto;
+}
+
+.switch-scroll::-webkit-scrollbar { width: 4px; }
+.switch-scroll::-webkit-scrollbar-track { background: transparent; }
+.switch-scroll::-webkit-scrollbar-thumb { background: var(--zinc-300); border-radius: 4px; }
+
+/* Joycon Hardware Details */
+.analog-stick {
+    width: 52px; height: 52px;
+    background: rgba(0,0,0,0.35); border-radius: 50%;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.5), 0 1px 2px rgba(255,255,255,0.1);
+    margin: 1.5rem 0;
+}
+.joycon-button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    transform: rotate(45deg);
+}
+.joycon-button {
+    width: 36px; height: 36px;
+    background: rgba(0,0,0,0.35); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.35); font-size: 10px; font-weight: bold;
+    backdrop-filter: blur(4px); transition: all 0.2s;
+}
+.joycon-button span { transform: rotate(-45deg); font-size: 14px; }
+.joycon-button.text { transform: rotate(-45deg); font-size: 11px; color: rgba(255,255,255,0.35); }
+.joycon-button:hover { background: rgba(0,0,0,0.5); color: rgba(255,255,255,0.6); }
+.joycon-dot { width: 14px; height: 14px; border-radius: 50%; background: rgba(0,0,0,0.25); margin-bottom: 1rem; }
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+.standalone-form-card {
+    background: #fff;
+    border-radius: var(--radius-3xl);
+    box-shadow: 0 4px 40px -10px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.form-header-icon {
+    width: 3rem; height: 3rem;
+    background: var(--nintendo-red);
+    border-radius: var(--radius-xl);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+    color: #fff;
+}
+
+.form-header p { font-size: 0.875rem; color: var(--on-surface-muted); margin-top: 0.5rem; }
+
+.form-group { display: flex; flex-direction: column; gap: 1.25rem; max-width: 32rem; margin: 0 auto; }
+
+.form-field {
+    background: rgba(250, 250, 250, 0.5);
+    border: 2px solid var(--zinc-100);
+    border-radius: var(--radius-xl);
+    padding: 0.75rem 1rem;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.form-field label {
+    display: block; font-size: 0.625rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--on-surface-muted); margin-bottom: 0.25rem;
+    transition: color 0.2s;
+}
+
+.form-field input, .form-field select, .form-field textarea {
+    width: 100%; border: none; background: transparent; outline: none;
+    font-family: inherit; font-size: 0.9375rem; font-weight: 500; color: var(--on-surface);
+}
+.form-field textarea { resize: none; min-height: 100px; }
+.form-field select { cursor: pointer; }
+
+.form-field:focus-within {
+    box-shadow: 0 0 0 3px rgba(230, 0, 18, 0.1);
+    border-color: var(--nintendo-red);
+}
+.form-field:focus-within label { color: var(--nintendo-red); }
+
+.form-field.error { border-color: var(--nintendo-red); }
+.error-msg { font-size: 0.6875rem; color: var(--nintendo-red); font-weight: 600; margin-top: 0.25rem; }
+
+.char-count { font-size: 0.625rem; font-weight: 700; color: var(--zinc-300); position: absolute; right: 1rem; top: 0.75rem;}
+.char-count.warn { color: var(--nintendo-red); }
+
+.btn-submit {
+    width: 100%; padding: 1rem; border: none; border-radius: var(--radius-xl);
+    background: var(--switch-gray); color: #fff; font-size: 0.9375rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    transition: all 0.2s;
+}
+.btn-submit:hover { background: var(--nintendo-red); }
+.btn-submit:active { transform: scale(0.98); }
+.btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.spinner { width: 1.25rem; height: 1.25rem; border: 3px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ==========================================================================
+   Info Cards
+   ========================================================================== */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+
+.info-card {
+    background: #fff; padding: 1.75rem; border-radius: var(--radius-2xl);
+    border: 2px solid var(--zinc-100); display: flex; flex-direction: column; align-items: center;
+    text-align: center; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    --btn-text-hover: #fff;
+}
+
+.info-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.12); border-color: var(--card-color); }
+
+.info-icon {
+    width: 3rem; height: 3rem; background: var(--zinc-50); border-radius: var(--radius-xl);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+    border: 2px solid var(--zinc-100); transition: all 0.3s;
+}
+.info-card:hover .info-icon { background: var(--card-color); border-color: var(--card-color); color: var(--btn-text-hover); }
+
+.info-card h3 { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.info-card p, .info-card .hours { font-size: 0.875rem; color: var(--on-surface-muted); font-weight: 500; flex: 1; }
+.info-card .hours span { font-weight: 600; color: var(--on-surface); }
+.info-card .hours .tz { font-size: 0.75rem; color: var(--zinc-300); margin-top: 0.25rem; display: block; }
+
+.info-btn {
+    margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.5rem 1rem;
+    background: var(--zinc-50); color: var(--on-surface-muted); font-size: 0.6875rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em; border-radius: 0.5rem; border: 1px solid var(--zinc-200);
+    transition: all 0.2s;
+}
+.info-btn .material-symbols-outlined { font-size: 14px; }
+.info-card:hover .info-btn { background: var(--card-color); border-color: var(--card-color); color: var(--btn-text-hover); }
+
+/* ==========================================================================
+   FAQ Section
+   ========================================================================== */
+.faq-wrapper { max-width: 768px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+.faq-item { border: 2px solid var(--zinc-100); border-radius: var(--radius-2xl); overflow: hidden; transition: all 0.3s; background: #fff; }
+.faq-item.active { border-color: var(--nintendo-red); }
+
+.faq-toggle {
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.25rem; background: none; border: none; text-align: left; transition: background 0.2s;
+}
+.faq-toggle:hover { background: var(--zinc-50); }
+.faq-toggle span:first-child { font-size: 0.875rem; font-weight: 700; color: var(--on-surface); padding-right: 1rem; }
+.faq-chevron { font-size: 1.25rem; color: var(--on-surface-muted); transition: transform 0.3s; }
+
+.faq-answer { max-height: 0; overflow: hidden; transition: all 0.3s; }
+.faq-answer p { padding: 0 1.25rem 1rem; font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.6; }
+
+/* ==========================================================================
+   Community Socials
+   ========================================================================== */
+.bg-surface-warm { background-color: var(--surface-warm); }
+.social-flex { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(1.5rem, 4vw, 3.5rem); margin-top: 2.5rem; }
+.social-item { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+
+.social-ring {
+    width: clamp(4rem, 8vw, 6rem); height: clamp(4rem, 8vw, 6rem); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; border: 2px solid;
+    color: #fff; position: relative; transition: all 0.3s;
+}
+.social-ring svg { width: 45%; height: 45%; fill: currentColor; }
+.social-ring::before {
+    content: ''; position: absolute; inset: -6px; border-radius: 50%;
+    border: 2px solid transparent; transition: all 0.4s;
+}
+.social-item:hover .social-ring { transform: scale(1.1); }
+.social-item:hover .social-ring::before { border-color: inherit; opacity: 0.3; }
+.social-item span { font-size: clamp(0.625rem, 2vw, 0.75rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--on-surface-muted); transition: color 0.3s; }
+
+/* Social Colors */
+.social-item.yt .social-ring { background: #FF0000; border-color: #FF0000; }
+.social-item.yt:hover span { color: #FF0000; }
+.social-item.fb .social-ring { background: #1877F2; border-color: #1877F2; }
+.social-item.fb:hover span { color: #1877F2; }
+.social-item.ig .social-ring { background: #E4405F; border-color: #E4405F; }
+.social-item.ig:hover span { color: #E4405F; }
+.social-item.dc .social-ring { background: #5865F2; border-color: #5865F2; }
+.social-item.dc:hover span { color: #5865F2; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer { padding: 2rem 0; background: #fff; border-top: 1px solid var(--zinc-100); }
+.footer-flex { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.footer-logo { display: flex; align-items: center; gap: 0.5rem; }
+.footer-logo-box { width: 1.75rem; height: 1.75rem; background: var(--nintendo-red); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 0.625rem; }
+.footer-logo span { font-weight: 800; font-size: 0.875rem; color: var(--on-surface); }
+.footer-copy { font-size: 0.6875rem; font-weight: 600; color: var(--zinc-400); }
+
+@media (min-width: 640px) {
+    .footer-flex { flex-direction: row; justify-content: space-between; }
+}
+
+/* ==========================================================================
+   Modals & Utilities
+   ========================================================================== */
+.modal-backdrop {
+    position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center; padding: 1rem;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.modal-backdrop.active { opacity: 1; pointer-events: all; }
+.modal-content {
+    background: #fff; border-radius: var(--radius-3xl); padding: 2.5rem; max-width: 24rem; width: 100%;
+    text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    transform: scale(0.95) translateY(10px); opacity: 0; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-backdrop.active .modal-content { transform: scale(1) translateY(0); opacity: 1; }
+.modal-icon { width: 4rem; height: 4rem; background: #f0fdf4; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: #22c55e; font-size: 2.5rem; }
+.modal-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; }
+.modal-text { font-size: 0.875rem; color: var(--on-surface-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.modal-btn { width: 100%; padding: 0.875rem; background: var(--nintendo-red); color: #fff; font-weight: 700; border: none; border-radius: var(--radius-xl); transition: all 0.2s; }
+.modal-btn:hover { background: var(--nintendo-red-dark); }
+
+.toast {
+    position: fixed; bottom: 1.5rem; left: 50%; transform: translate(-50%, 100px);
+    z-index: 70; background: var(--switch-gray); color: #fff; padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-xl); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    display: flex; align-items: center; gap: 0.625rem; font-size: 0.875rem; font-weight: 600;
+    opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toast.show { transform: translate(-50%, 0); opacity: 1; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50; width: 2.75rem; height: 2.75rem;
+    background: var(--nintendo-red); color: #fff; border-radius: 50%; border: none;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    opacity: 0; transform: translateY(10px); pointer-events: none; transition: all 0.3s;
+}
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+.back-to-top:hover { background: var(--nintendo-red-dark); }
+.back-to-top:active { transform: scale(0.95); }

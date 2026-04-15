@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nintendo — My Cart</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Reuse your existing CSS variables from games.css -->
+  <link rel="stylesheet" href="../Shared/shared.css">
+  <link rel="stylesheet" href="../Cart/cart.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR — identical to your games.html navbar -->
+  <nav class="navbar navbar-expand-lg custom-navbar shadow-sm">
+    <div class="container">
+
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="../Home/index.html">
+        <img src="../Shared/images/logo.png" alt="Nintendo Logo" width="40" height="40" class="me-2">
+        Nintendo
+      </a>
+
+      <div class="ms-auto d-flex align-items-center gap-2 me-2">
+
+        <a href="../Favourite/favourite.html" class="nav-icon-btn" title="My Favourites">
+          <i class="bi bi-heart-fill"></i>
+          <span class="nav-badge fav-badge-count" style="display:none;">0</span>
+        </a>
+
+        <a href="../Cart/cart.html" class="nav-icon-btn" title="My Cart">
+          <i class="bi bi-cart-fill"></i>
+          <span class="nav-badge cart-badge-count" style="display:none;">0</span>
+        </a>
+
+        <button id="darkModeToggle" class="dark-toggle" title="Toggle Dark Mode">
+          <i class="bi bi-moon-fill" id="themeIcon"></i>
+        </button>
+
+        <button id="authNavBtn" class="ms-1"></button>
+
+        <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="../Home/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../About/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Consoles/consoles.html">Consoles</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Accessories/accessories.html">Accessories</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Games/games.html">Games</a></li>
+          <li class="nav-item"><a class="nav-link" href="../News/news.html">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Contact/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="cart-hero">
+    <div class="container text-center">
+      <div class="cart-hero-eyebrow">Ready to Buy?</div>
+      <h1 class="cart-hero-title">MY <span class="cart-hero-accent">CART</span></h1>
+      <p class="cart-hero-sub">Items saved in localStorage — ready for checkout</p>
+    </div>
+  </header>
+
+  <!-- CART CONTENT -->
+  <section class="cart-section">
+    <div class="container">
+
+      <!-- Empty state (shown when cart is empty) -->
+      <div id="cartEmpty" class="empty-state" style="display:none;">
+        <i class="bi bi-cart-x"></i>
+        <h3>Your Cart is Empty</h3>
+        <p>Head to the Games page and click "Add to Cart" on any game.</p>
+        <a href="../Games/games.html" class="btn btn-nintendo px-4 py-2 mt-2">Browse Games</a>
+      </div>
+
+      <!-- Cart table + summary (shown when cart has items) -->
+      <div id="cartContent" style="display:none;">
+        <div class="row g-4">
+
+          <!-- Left: cart items list -->
+          <div class="col-lg-8">
+            <div class="cart-table-box">
+
+              <!-- Table header -->
+              <div class="cart-table-head">
+                <span>Game</span>
+                <span>Price</span>
+                <span>Qty</span>
+                <span>Subtotal</span>
+                <span></span>
+              </div>
+
+              <!-- Rows injected by cart.js -->
+              <div id="cartRows"></div>
+
+            </div>
+
+            <!-- Below table actions -->
+            <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+              <a href="../Games/games.html" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left me-1"></i>Continue Shopping
+              </a>
+              <button id="clearCartBtn" class="btn btn-outline-danger btn-sm">
+                <i class="bi bi-trash3 me-1"></i>Clear Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: order summary -->
+          <div class="col-lg-4">
+            <div class="cart-summary">
+
+              <h3 class="summary-heading">Order Summary</h3>
+
+              <div class="summary-line">
+                <span>Subtotal</span>
+                <span id="summarySubtotal">RM 0.00</span>
+              </div>
+              <div class="summary-line">
+                <span>Shipping</span>
+                <span class="text-success fw-bold">Free</span>
+              </div>
+              <div class="summary-line summary-total-line">
+                <span>Total</span>
+                <span id="summaryTotal">RM 0.00</span>
+              </div>
+
+              <!-- Checkout button — frontend demo only, no backend -->
+              <button class="checkout-btn" id="checkoutBtn">
+                <i class="bi bi-credit-card me-2"></i>Proceed to Checkout
+              </button>
+
+              <p class="checkout-note">
+                <i class="bi bi-shield-check me-1"></i>
+                Secure demo checkout — no real payment processed.
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AUTH MODAL -->
+  <div id="authModal" class="auth-modal-overlay">
+    <div class="auth-modal-box">
+      <button class="auth-modal-close" id="closeAuthModal"><i class="bi bi-x-lg"></i></button>
+      <div id="loginBox">
+        <div class="auth-form-title">LOGIN</div>
+        <form id="loginForm">
+          <div class="auth-group"><label>Username</label><input type="text" id="loginUsername" required></div>
+          <div class="auth-group"><label>Password</label><input type="password" id="loginPassword" required></div>
+          <button type="submit" class="auth-submit">Sign In</button>
+        </form>
+        <div class="auth-switch">No account? <a href="#" id="showSignup">Sign up</a></div>
+      </div>
+      <div id="signupBox" style="display:none;">
+        <div class="auth-form-title">SIGN UP</div>
+        <form id="signupForm">
+          <div class="auth-group"><label>Username</label><input type="text" id="signupUsername" required></div>
+          <div class="auth-group"><label>Password</label><input type="password" id="signupPassword" required></div>
+          <div class="auth-group"><label>Confirm Password</label><input type="password" id="confirmPassword" required>
+          </div>
+          <button type="submit" class="auth-submit">Create Account</button>
+        </form>
+        <div class="auth-switch">Have account? <a href="#" id="showLogin">Login</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="custom-footer mt-5">
+    <div class="container-fluid footer-top px-5">
+      <div class="row gy-4 justify-content-between">
+        <div class="col-lg-4 col-md-12">
+          <div class="footer-brand d-flex align-items-center mb-3">
+            <img src="../Shared/images/logo.png" alt="Nintendo Logo" width="50" height="50" class="me-2">
+            <h3 class="mb-0">NINTENDO</h3>
+          </div>
+          <p class="footer-text">
+            Bringing smiles to faces around the world through dedicated gaming experiences and beloved characters.
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-heading">NAVIGATE</h5>
+          <ul class="footer-links">
+            <li><a href="../Home/index.html">Home Page</a></li>
+            <li><a href="../Consoles/consoles.html">Consoles</a></li>
+            <li><a href="../Accessories/accessories.html">Accessories</a></li>
+            <li><a href="../Games/games.html">All Games</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-heading">OTHERS</h5>
+          <ul class="footer-links">
+            <li><a href="../News/news.html">Latest News</a></li>
+            <li><a href="../Contact/contact.html">Contact Us</a></li>
+            <li><a href="../Favourite/favourite.html">My Favourite</a></li>
+            <li><a href="../Cart/cart.html">My Cart</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-12">
+          <h5 class="footer-heading">CONNECT</h5>
+          <div class="social-icons">
+            <a href="https://x.com/NintendoAmerica" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/nintendoamerica/" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/c/nintendo" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="https://discord.com/invite/nintendo" title="Discord"><i class="bi bi-discord"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="mb-0">© 2026 Nintendo Website Project</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="https://www.nintendo.com/us/terms-of-use/?srsltid=AfmBOorfR5Cqtw0SzZcCsMF5edbvEN6H8uKee9dxSR7cEiwUHdr1m0Hb"
+            class="bottom-link">Terms of Service</a>
+          <span class="mx-2">|</span>
+          <a href="https://www.nintendo.com/us/privacy-policy/" class="bottom-link">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../Shared/shared.js"></script>
+  <script src="../Cart/cart.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+[
+  {
+    "id": "switch-2",
+    "name": "Nintendo Switch 2",
+    "price": "RM 2,488",
+    "badge": "LATEST RELEASE",
+    "badgeClass": "badge-new",
+    "category": "switch2",
+    "shortDesc": "Next-gen hybrid console. 7.9\" 1080p screen, 4K docked output, magnetic Joy-Con 2 controllers with mouse support.",
+    "description": "Nintendo Switch 2 redefines the boundaries of hybrid gaming, combining the freedom of a handheld with the raw performance of a high-end home console. Engineered for the next generation of adventures, it brings your favorite worlds to life while maintaining the seamless \"pick up and play\" versatility that defined its predecessor.",
+    "specs": [
+      "Custom Nvidia™ Tegra T239 SoC with DLSS enabled",
+      "7.9\" FHD LCD touchscreen display (HDR10 supported & 120hz VRR)",
+      "Up to 4K 60fps resolution & 2K 120fps in docked mode",
+      "Magnetic Joy-Con 2 with mouse-style controls",
+      "Built-in GameChat voice & video chat",
+      "Backward compatible with Nintendo Switch games",
+      "12GB LPDDR5X RAM",
+      "256GB UFS internal storage (expandable via microSD)"
+    ],
+    "buyUrl": "https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099",
+    "illustration": "switch2",
+    "cardImageUrl": "/Consoles/Images/Nintendo Switch 2 Image 2.png",
+    "detailImageUrl": "/Consoles/Images/Nintendo Switch 2 Image 1.png"
+  },
+  {
+    "id": "switch-2-mk-bundle",
+    "name": "Switch 2 + Mario Kart World Bundle",
+    "price": "RM 2,599",
+    "badge": "Bundle",
+    "badgeClass": "badge-bundle",
+    "category": "bundle",
+    "shortDesc": "Console bundled with a digital copy of Mario Kart World. Race across seamlessly connected tracks on day one.",
+    "description": "Get everything you need to start racing on day one. This bundle includes the Nintendo Switch 2 console plus a digital download code for Mario Kart World — the latest entry in the beloved racing series featuring seamlessly connected open-world tracks, the new Knockout Tour mode, Free Roam exploration, and support for mouse-style Joy-Con steering.",
+    "specs": [
+      "Nintendo Switch 2 console included",
+      "Digital copy of Mario Kart World (RM 398 value)",
+      "Open-world connected tracks & Free Roam mode",
+      "Knockout Tour — new competitive race format",
+      "Joy-Con 2 mouse-style steering support",
+      "Online multiplayer via Nintendo Switch Online"
+    ],
+    "buyUrl": "https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099",
+    "illustration": "switch2",
+    "cardImageUrl": "/Consoles/Images/Nintendo Switch 2 Mario Image 1.png",
+    "detailImageUrl": "/Consoles/Images/Nintendo Switch 2 Mario Image 2.png"
+  },
+  {
+    "id": "switch-oled",
+    "name": "Nintendo Switch — OLED Model",
+    "price": "RM 1,288",
+    "badge": "Classic",
+    "badgeClass": "badge-classic",
+    "category": "switch",
+    "shortDesc": "Vibrant 7-inch OLED screen, wide adjustable stand, 64GB internal storage, and wired LAN port in the dock.",
+    "description": "Experience your favorite Nintendo games on a vibrant 7-inch OLED screen with vivid colors and crisp contrast. The OLED Model features a wide adjustable stand for tabletop play, a dock with a wired LAN port for stable online connections, 64GB of internal storage, and enhanced audio for a richer sound experience.",
+    "specs": [
+      "7-inch OLED screen with vivid colors",
+      "Wide adjustable stand for tabletop mode",
+      "64GB internal storage",
+      "Dock with wired LAN port included",
+      "Enhanced audio speakers",
+      "Compatible with all Nintendo Switch games"
+    ],
+    "buyUrl": "https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099",
+    "illustration": "oled",
+    "cardImageUrl": "/Consoles/Images/Nintendo Switch Oled Image 1.png",
+    "detailImageUrl": "/Consoles/Images/Nintendo Switch Oled Image 2.png"
+  },
+  {
+    "id": "switch-lite",
+    "name": "Nintendo Switch Lite",
+    "price": "RM 838",
+    "badge": "Handheld",
+    "badgeClass": "badge-handheld",
+    "category": "switch",
+    "shortDesc": "Compact, lightweight, and built for handheld play. Available in multiple vibrant colors. Perfect for on-the-go gaming.",
+    "description": "A compact, lightweight Nintendo Switch system designed specifically for handheld play. With a sleek, unibody design and integrated controls, the Switch Lite is perfect for gamers on the go. Available in a variety of fun colors. Plays all Nintendo Switch games that support handheld mode.",
+    "specs": [
+      "5.5-inch LCD touchscreen",
+      "Lightweight unibody design (275g)",
+      "Built-in controls — no detachable Joy-Cons",
+      "Available in Coral, Yellow, Gray, Turquoise & more",
+      "32GB internal storage (expandable via microSD)",
+      "Plays all handheld-compatible Switch games"
+    ],
+    "buyUrl": "https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099",
+    "illustration": "lite",
+    "cardImageUrl": "/Consoles/Images/Nintendo Switch Lite Image 1.png",
+    "detailImageUrl": "/Consoles/Images/Nintendo Switch Lite Image 2.png"
+  },
+  {
+    "id": "switch-2-dk-bundle",
+    "name": "Switch 2 + Donkey Kong Bananza",
+    "price": "RM 2,877",
+    "badge": "Bundle",
+    "badgeClass": "badge-bundle",
+    "category": "bundle",
+    "shortDesc": "Console bundled with Donkey Kong Bananza. Smash, throw, and climb through a vast underground 3D adventure.",
+    "description": "Take on a vast underground 3D adventure with this console bundle. Includes the Nintendo Switch 2 system plus a copy of Donkey Kong Bananza — DK's brand-new 3D platforming adventure where you smash, throw, and climb your way through a massive interconnected underground world filled with secrets, challenges, and boss battles.",
+    "specs": [
+      "Nintendo Switch 2 console included",
+      "Copy of Donkey Kong Bananza (RM 278 value)",
+      "Massive 3D underground adventure world",
+      "Classic DK gameplay — smash, throw & climb",
+      "Supports co-op multiplayer",
+      "Full Switch 2 feature set included"
+    ],
+    "buyUrl": "https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099",
+    "illustration": "switch2",
+    "cardImageUrl": "/Consoles/Images/Nintendo Switch 2 Donkey Kong Bananza 1.png",
+    "detailImageUrl": "/Consoles/Images/Donkey Kong Bonanza Game Intro.png"
+  },
+  {
+    "id": "switch-oled-splatoon",
+    "name": "Switch OLED — Splatoon 3 Edition",
+    "price": "RM 1,699",
+    "badge": "Exclusive",
+    "badgeClass": "badge-special",
+    "category": "promo",
+    "shortDesc": "Special edition OLED console with Splatoon-themed gradient Joy-Cons, custom dock, and unique design accents.",
+    "description": "Stand out from the crowd with this special edition Nintendo Switch OLED Model featuring a Splatoon 3-inspired design. Includes uniquely themed gradient Joy-Con controllers in purple and yellow-green, a custom decorated dock, and a white console body with Splatoon ink-splatter accents. The vibrant 7-inch OLED screen brings every splat to life.",
+    "specs": [
+      "Splatoon 3 themed gradient Joy-Cons",
+      "Custom decorated dock with ink splatter design",
+      "White console body with unique accents",
+      "7-inch OLED screen with vivid colors",
+      "64GB internal storage",
+      "Game sold separately"
+    ],
+    "buyUrl": "https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099",
+    "illustration": "splatoon",
+    "cardImageUrl": "/Consoles/Images/Nintendo Switch Oled Splatoon 3 1.png",
+    "detailImageUrl": "/Consoles/Images/Nintendo Switch Oled Splatoon 3 2.png"
+  }
+]

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessories | Nintendo</title>
+  <link rel="icon" type="image/x-icon" href="../Shared/images/logo.png">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Bebas+Neue&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../Accessories/accessories.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../Shared/shared.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg custom-navbar shadow-sm">
+    <div class="container">
+
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="../Home/index.html">
+        <img src="../Shared/images/logo.png" alt="Nintendo Logo" width="40" height="40" class="me-2">
+        Nintendo
+      </a>
+
+      <div class="ms-auto d-flex align-items-center gap-2 me-2">
+
+        <a href="../Favourite/favourite.html" class="nav-icon-btn" title="My Favourites">
+          <i class="bi bi-heart-fill"></i>
+          <span class="nav-badge fav-badge-count" style="display:none;">0</span>
+        </a>
+
+        <a href="../Cart/cart.html" class="nav-icon-btn" title="My Cart">
+          <i class="bi bi-cart-fill"></i>
+          <span class="nav-badge cart-badge-count" style="display:none;">0</span>
+        </a>
+
+        <button id="darkModeToggle" class="dark-toggle" title="Toggle Dark Mode">
+          <i class="bi bi-moon-fill" id="themeIcon"></i>
+        </button>
+
+        <button id="authNavBtn" class="ms-1"></button>
+
+        <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="../Home/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../About/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Consoles/consoles.html">Consoles</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../Accessories/accessories.html">Accessories</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Games/games.html">Games</a></li>
+          <li class="nav-item"><a class="nav-link" href="../News/news.html">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Contact/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ============ COOKIE CONSENT BANNER ============ -->
+  <div id="cookieBanner" class="cookie-banner" style="display:none;">
+    <div class="container d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3 py-3">
+      <p class="mb-0 small"><i class="bi bi-shield-lock me-2"></i>We use cookies to remember your preferences, wishlist,
+        and recently viewed products. By continuing, you agree to our cookie policy.</p>
+      <div class="d-flex gap-2 flex-shrink-0">
+        <button class="btn btn-sm btn-light fw-bold" id="cookieAccept">Accept All</button>
+        <button class="btn btn-sm btn-outline-light fw-bold" id="cookieDecline">Decline</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ DAILY PICKS SLIDESHOW ============ -->
+  <section class="daily-picks-section">
+    <div class="container">
+      <div id="dailyPicksCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-inner">
+
+          <!-- Pick 1 - Joy-Con 2 (Fixed) -->
+          <div class="carousel-item active">
+            <div class="daily-pick-row">
+              <div class="daily-pick-image">
+                <div class="pick-img-placeholder">
+                  <img src="/Accessories/Images/Nintendo Joy Con Image 1.png" alt="Joy-Con 2" class="pick-real-image">
+                </div>
+              </div>
+              <div class="daily-pick-content">
+                <span class="daily-pick-badge">DAILY PICK</span>
+                <h2 class="daily-pick-title">Joy-Con 2 Controllers</h2>
+                <p class="daily-pick-desc">Redesigned with magnetic attachment, a built-in optical sensor for mouse-like
+                  precision, and a refined ergonomic shape. The Joy-Con 2 delivers the most versatile gaming input
+                  Nintendo has ever created.</p>
+                <div class="daily-pick-price">
+                  <span class="pick-price-tag">RM 498</span>
+                  <span class="pick-price-note">MSRP (Per Pair)</span>
+                </div>
+                <a href="#" class="btn btn-nin-primary pick-shop-btn" data-product-id="joycon-2">Shop Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pick 2 -->
+          <div class="carousel-item">
+            <div class="daily-pick-row">
+              <div class="daily-pick-image">
+                <div class="pick-img-placeholder">
+                  <img src="/Accessories/Images/Nintendo Switch 2 Pro Controller Image 1.png" alt="Switch 2 Pro"
+                    class="pick-real-image">
+                </div>
+              </div>
+              <div class="daily-pick-content">
+                <span class="daily-pick-badge">DAILY PICK</span>
+                <h2 class="daily-pick-title">Switch 2 Pro Controller</h2>
+                <p class="daily-pick-desc">Engineered for extended gaming sessions. Features HD Rumble, NFC for amiibo,
+                  precision analog sticks with anti-drift technology, and a 60-hour rechargeable battery.</p>
+                <div class="daily-pick-price">
+                  <span class="pick-price-tag">RM 388</span>
+                  <span class="pick-price-note">MSRP (Each)</span>
+                </div>
+                <a href="#" class="btn btn-nin-primary pick-shop-btn" data-product-id="pro-controller">Shop Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pick 3 -->
+          <div class="carousel-item">
+            <div class="daily-pick-row">
+              <div class="daily-pick-image">
+                <div class="pick-img-placeholder">
+                  <img src="/Accessories/Images/Nintendo Switch 2 Casing Image 1.png" alt="Switch 2 Casing"
+                    class="pick-real-image">
+                </div>
+              </div>
+              <div class="daily-pick-content">
+                <span class="daily-pick-badge">DAILY PICK</span>
+                <h2 class="daily-pick-title">Switch 2 Carrying Case</h2>
+                <p class="daily-pick-desc">Premium hard-shell protection designed specifically for the Nintendo Switch
+                  2. Fits the console with Joy-Cons attached, holds up to 10 game cards, and features a built-in stand.
+                </p>
+                <div class="daily-pick-price">
+                  <span class="pick-price-tag">RM 128</span>
+                  <span class="pick-price-note">MSRP (Each)</span>
+                </div>
+                <a href="#" class="btn btn-nin-primary pick-shop-btn" data-product-id="carrying-case">Shop Now</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Carousel Controls -->
+        <div class="daily-picks-controls">
+          <button class="carousel-control-prev" type="button" data-bs-target="#dailyPicksCarousel" data-bs-slide="prev">
+            <span class="carousel-nav-circle"><i class="bi bi-chevron-left"></i></span>
+          </button>
+          <div class="carousel-indicators position-static m-0">
+            <button type="button" data-bs-target="#dailyPicksCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#dailyPicksCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#dailyPicksCarousel" data-bs-slide-to="2"></button>
+          </div>
+          <button class="carousel-control-next" type="button" data-bs-target="#dailyPicksCarousel" data-bs-slide="next">
+            <span class="carousel-nav-circle"><i class="bi bi-chevron-right"></i></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RECENTLY VIEWED ============ -->
+  <section class="recently-viewed-section py-4" id="recentlyViewedSection" style="display:none;">
+    <div class="container">
+      <h5 class="section-subheading mb-3"><i class="bi bi-clock-history me-2"></i>Recently Viewed</h5>
+      <div class="d-flex gap-3 overflow-auto pb-2" id="recentlyViewedContainer"></div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTS: SIDEBAR + GRID ============ -->
+  <section class="products-section py-5">
+    <div class="container">
+
+      <!-- MOBILE: Horizontal category pills with scroll arrows (hidden on lg+) -->
+      <div class="mobile-filter-bar d-lg-none mb-4" id="mobileFilterBar">
+        <div class="d-flex align-items-center gap-2">
+          <div class="filter-scroll-outer flex-grow-1">
+            <button class="filter-arrow filter-arrow-left d-none" id="mobileFilterArrowLeft" aria-label="Scroll left">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+
+            <div class="filter-scroll-area" id="mobileFilterScroll">
+              <button class="btn filter-pill active" data-filter="all">All</button>
+              <button class="btn filter-pill" data-filter="controllers">Controllers</button>
+              <button class="btn filter-pill" data-filter="protection">Protection</button>
+              <button class="btn filter-pill" data-filter="visual">Visual</button>
+              <button class="btn filter-pill" data-filter="charging">Charging</button>
+            </div>
+
+            <button class="filter-arrow filter-arrow-right d-none" id="mobileFilterArrowRight"
+              aria-label="Scroll right">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+
+          <button class="btn wishlist-filter-btn" data-bs-toggle="offcanvas" data-bs-target="#wishlistDrawer"
+            aria-label="View Wishlist">
+            <i class="bi bi-heart-fill"></i>
+            <span class="wishlist-count-badge wishlist-count-sync">0</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <!-- PC: Vertical Sidebar (visible on lg+) -->
+        <div class="col-lg-3 d-none d-lg-block">
+          <div class="category-sidebar" id="categorySidebar">
+            <div class="sidebar-header">
+              <h6 class="sidebar-title"><i class="bi bi-funnel me-2"></i>Categories</h6>
+            </div>
+            <div class="sidebar-body">
+              <label class="category-check-item active" data-filter="all">
+                <input type="checkbox" checked>
+                <span class="check-box"><i class="bi bi-check-lg"></i></span>
+                <span class="check-label">All Accessories</span>
+                <span class="check-count" id="countAll">0</span>
+              </label>
+              <label class="category-check-item" data-filter="controllers">
+                <input type="checkbox">
+                <span class="check-box"><i class="bi bi-check-lg"></i></span>
+                <span class="check-label">Controllers</span>
+                <span class="check-count" id="countControllers">0</span>
+              </label>
+              <label class="category-check-item" data-filter="protection">
+                <input type="checkbox">
+                <span class="check-box"><i class="bi bi-check-lg"></i></span>
+                <span class="check-label">Protection &amp; Storage</span>
+                <span class="check-count" id="countProtection">0</span>
+              </label>
+              <label class="category-check-item" data-filter="visual">
+                <input type="checkbox">
+                <span class="check-box"><i class="bi bi-check-lg"></i></span>
+                <span class="check-label">Visual</span>
+                <span class="check-count" id="countVisual">0</span>
+              </label>
+              <label class="category-check-item" data-filter="charging">
+                <input type="checkbox">
+                <span class="check-box"><i class="bi bi-check-lg"></i></span>
+                <span class="check-label">Charging &amp; Power</span>
+                <span class="check-count" id="countCharging">0</span>
+              </label>
+            </div>
+            <div class="sidebar-footer">
+              <button class="btn wishlist-sidebar-btn" data-bs-toggle="offcanvas" data-bs-target="#wishlistDrawer">
+                <i class="bi bi-heart-fill me-2"></i>My Wishlist
+                <span class="wishlist-count-badge wishlist-count-sync ms-auto">0</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Grid Area -->
+        <div class="col-lg-9">
+          <div class="grid-header d-flex align-items-center justify-content-between mb-3">
+            <h2 class="category-selected-title" id="categoryLabel">All Accessories</h2>
+            <span class="results-count" id="resultsCount">0 products</span>
+          </div>
+          <div class="row row-cols-1 row-cols-sm-2 g-4" id="productGrid"></div>
+          <nav class="d-flex justify-content-center mt-5" id="paginationNav" aria-label="Product pagination"></nav>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WISHLIST OFFCANVAS ============ -->
+  <div class="offcanvas offcanvas-end wishlist-drawer" tabindex="-1" id="wishlistDrawer"
+    aria-labelledby="wishlistDrawerLabel">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title" id="wishlistDrawerLabel"><i class="bi bi-heart-fill text-danger me-2"></i>My Wishlist
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" id="wishlistBody">
+      <p class="text-muted text-center mt-5" id="wishlistEmpty">Your wishlist is empty.<br>Tap the <i
+          class="bi bi-heart"></i> on any product to save it.</p>
+      <div id="wishlistItems"></div>
+    </div>
+    <div class="offcanvas-footer p-3 border-top" id="wishlistFooter" style="display:none;">
+      <button class="btn btn-outline-danger btn-sm w-100" id="clearWishlist"><i class="bi bi-trash3 me-1"></i>Clear
+        Wishlist</button>
+    </div>
+  </div>
+
+  <!-- ============ PRODUCT DETAIL OVERLAY ============ -->
+  <div class="product-overlay" id="productOverlay">
+    <div class="product-overlay-backdrop" id="overlayBackdrop"></div>
+    <div class="product-overlay-panel">
+      <button class="overlay-close-btn" id="overlayClose" aria-label="Close overlay"><i class="bi bi-x-lg"></i></button>
+      <div class="overlay-content">
+        <div class="row g-0 h-100">
+          <div class="col-lg-6 overlay-image-col">
+            <div class="overlay-image-area" id="overlayImageArea"></div>
+          </div>
+          <div class="col-lg-6 overlay-info-col">
+            <div class="overlay-info">
+              <span class="overlay-badge" id="overlayBadge">New</span>
+              <h2 class="overlay-product-name" id="overlayName">Product Name</h2>
+              <div class="overlay-price-row">
+                <span class="overlay-price" id="overlayPrice">RM 0</span>
+                <span class="overlay-msrp">MSRP</span>
+              </div>
+              <div class="overlay-divider"></div>
+              <p class="overlay-description" id="overlayDescription"></p>
+              <div class="overlay-specs" id="overlaySpecs"></div>
+              <div class="overlay-actions">
+                <a href="#" class="btn btn-nin-buy" id="overlayBuyBtn" target="_blank" rel="noopener"><i
+                    class="bi bi-cart3 me-2"></i>Where to Buy</a>
+                <button class="btn btn-nin-wish-overlay" id="overlayWishBtn"><i class="bi bi-heart me-1"></i>Add to
+                  Wishlist</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TOAST ============ -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1100;">
+    <div id="ninToast" class="toast align-items-center text-bg-dark border-0" role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="ninToastBody">Action completed.</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="authModal" class="auth-modal-overlay">
+    <div class="auth-modal-box">
+      <button class="auth-modal-close" id="closeAuthModal">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <div id="loginBox">
+        <div class="auth-form-title">LOGIN</div>
+        <form id="loginForm">
+          <div class="auth-group">
+            <label>Username</label>
+            <input type="text" id="loginUsername" placeholder="Enter username" required>
+          </div>
+          <div class="auth-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter password" required>
+          </div>
+          <button type="submit" class="auth-submit">Sign In</button>
+        </form>
+        <div class="auth-switch">No account? <a href="#" id="showSignup">Sign up</a></div>
+      </div>
+
+      <div id="signupBox" style="display:none;">
+        <div class="auth-form-title">SIGN UP</div>
+        <form id="signupForm">
+          <div class="auth-group">
+            <label>Username</label>
+            <input type="text" id="signupUsername" placeholder="Choose a username" required>
+          </div>
+          <div class="auth-group">
+            <label>Password</label>
+            <input type="password" id="signupPassword" placeholder="Create a password" required>
+          </div>
+          <div class="auth-group">
+            <label>Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Repeat password" required>
+          </div>
+          <button type="submit" class="auth-submit">Create Account</button>
+        </form>
+        <div class="auth-switch">Have an account? <a href="#" id="showLogin">Login</a></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="custom-footer mt-5">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12">
+          <div class="footer-brand d-flex align-items-center mb-3">
+            <img src="../Shared/images/logo.png" alt="Nintendo Logo" width="50" height="50" class="me-2">
+            <h3 class="mb-0">NINTENDO</h3>
+          </div>
+          <p class="footer-text">
+            Bringing smiles to faces around the world through dedicated gaming experiences and beloved characters.
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-heading">NAVIGATE</h5>
+          <ul class="footer-links">
+            <li><a href="../Home/index.html">Home Page</a></li>
+            <li><a href="../Consoles/consoles.html">Consoles</a></li>
+            <li><a href="../Accessories/accessories.html">Accessories</a></li>
+            <li><a href="../Games/games.html">All Games</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-heading">OTHERS</h5>
+          <ul class="footer-links">
+            <li><a href="../News/news.html">Latest News</a></li>
+            <li><a href="../Contact/contact.html">Contact Us</a></li>
+            <li><a href="../Favourite/favourite.html">My Favourite</a></li>
+            <li><a href="../Cart/cart.html">My Cart</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-12">
+          <h5 class="footer-heading">CONNECT</h5>
+          <div class="social-icons">
+            <a href="https://x.com/NintendoAmerica" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/nintendoamerica/" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/c/nintendo" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="https://discord.com/invite/nintendo" title="Discord"><i class="bi bi-discord"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="mb-0">© 2026 Nintendo Website Project</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="https://www.nintendo.com/us/terms-of-use/?srsltid=AfmBOorfR5Cqtw0SzZcCsMF5edbvEN6H8uKee9dxSR7cEiwUHdr1m0Hb"
+            class="bottom-link">Terms of Service</a>
+          <span class="mx-2">|</span>
+          <a href="https://www.nintendo.com/us/privacy-policy/" class="bottom-link">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-4.0.0-beta.min.js"></script>
+  <script src="../Accessories/accessories.js"></script>
+  <script src="../Shared/shared.js"></script>
+</body>
+
+</html>

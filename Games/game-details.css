@@ -1,0 +1,516 @@
+/* ===== BREADCRUMB ===== */
+.breadcrumb-bar {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border-light);
+  padding: 12px 0;
+  transition: background var(--ease);
+}
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  flex-wrap: wrap;
+}
+.breadcrumb-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--ease);
+}
+.breadcrumb-nav a:hover { color: var(--red); }
+.breadcrumb-nav span:last-child { color: var(--red); font-weight: 700; }
+.bc-sep { color: var(--border); }
+
+/* ===== HERO ===== */
+.details-hero {
+  position: relative;
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+  background-color: #111;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.details-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%);
+}
+.details-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 48px;
+  color: white;
+}
+.hero-genre-badge {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  padding: 5px 16px;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 14px;
+}
+.details-hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  animation: heroSlideUp 0.7s ease forwards;
+}
+.hero-rating { margin-bottom: 10px; color: #FFD700; font-size: 1.1rem; letter-spacing: 2px; }
+.details-hero-sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  font-weight: 500;
+}
+
+@keyframes heroSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== NOT FOUND ===== */
+.not-found-box {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 60px 40px;
+  border: 1px solid var(--border-light);
+  display: inline-block;
+  max-width: 500px;
+  width: 100%;
+}
+.not-found-icon {
+  font-size: 4rem;
+  color: var(--red);
+  display: block;
+  margin-bottom: 20px;
+}
+.not-found-box h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.not-found-box p { color: var(--text-muted); }
+
+/* ===== SECTION COMMON ===== */
+.section-header { text-align: center; margin-bottom: 40px; }
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--red-soft);
+  color: var(--red);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.related-badge { background: #e8f8ff; color: #0070c9; }
+[data-theme="dark"] .related-badge { background: rgba(0,112,201,0.12); }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  color: var(--text);
+  letter-spacing: 2px;
+}
+
+/* ===== DETAILS SECTION ===== */
+.details-section {
+  padding: 70px 0;
+  background: var(--bg);
+  transition: background var(--ease);
+}
+
+/* Info Card */
+.info-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 36px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 24px var(--shadow);
+  height: 100%;
+  transition: background var(--ease);
+}
+.info-card-header { margin-bottom: 20px; }
+.info-game-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.star-rating { color: #FFD700; font-size: 1rem; letter-spacing: 2px; }
+.game-description {
+  color: var(--text-muted);
+  font-size: 0.97rem;
+  line-height: 1.8;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Info List */
+.info-list { margin-bottom: 28px; display: flex; flex-direction: column; gap: 0; }
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.info-row:last-child { border-bottom: none; }
+.info-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.info-label i { color: var(--red); }
+.info-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.info-rating { color: var(--red); }
+
+/* Buttons */
+.detail-btn-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.detail-fav-btn {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  color: var(--text-muted);
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all var(--ease);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.detail-fav-btn:hover { border-color: var(--red); color: var(--red); background: var(--red-soft); }
+.detail-fav-btn.active-fav {
+  background: var(--red-soft);
+  border-color: var(--red);
+  color: var(--red);
+  box-shadow: 0 4px 14px var(--red-glow);
+}
+.btn-nintendo {
+  background: linear-gradient(135deg, var(--red), var(--red-light));
+  color: white !important;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--ease);
+  text-decoration: none;
+}
+.btn-nintendo:hover {
+  background: linear-gradient(135deg, #c90010, #e05555);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--red-glow);
+}
+.fav-status {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.fav-status.saved { color: var(--red); }
+
+/* Video Card */
+.video-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 24px var(--shadow);
+  height: 100%;
+  transition: background var(--ease);
+}
+.video-card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+}
+.video-card-header i { color: var(--red); font-size: 1.3rem; }
+.video-card .ratio { border-radius: 0; }
+.video-card iframe { border: none; }
+
+/* ===== SCREENSHOT GALLERY ===== */
+.gallery-section {
+  padding: 70px 0;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  transition: background var(--ease);
+}
+.screenshot-gallery {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.gallery-track-wrap {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.gallery-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.gallery-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+.gallery-slide img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+  transition: transform 0.5s ease;
+}
+.gallery-slide img:hover { transform: scale(1.02); }
+.gallery-btn {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  color: var(--text);
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--bounce);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+.gallery-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: white;
+  transform: scale(1.1);
+}
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.gallery-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: all var(--ease);
+}
+.gallery-dot.active {
+  background: var(--red);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* ===== EXTRA SECTION ===== */
+.extra-section {
+  padding: 70px 0;
+  background: var(--bg);
+  transition: background var(--ease);
+}
+.extra-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 16px var(--shadow);
+  height: 100%;
+  transition: all var(--ease);
+}
+.extra-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px var(--shadow-hover);
+  border-color: var(--red);
+}
+.extra-card-icon {
+  width: 48px; height: 48px;
+  background: var(--red-soft);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--red);
+  margin-bottom: 16px;
+}
+.extra-card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.feature-list { list-style: none; padding: 0; margin: 0; }
+.feature-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.feature-list li:last-child { border-bottom: none; }
+.feature-list li::before {
+  content: '✓';
+  color: var(--red);
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag-badge {
+  background: var(--red-soft);
+  color: var(--red);
+  padding: 5px 14px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: all var(--ease);
+  cursor: default;
+}
+.tag-badge:hover { background: var(--red); color: white; }
+.platform-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.platform-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.platform-icons span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.platform-icons i { color: var(--red); }
+
+/* ===== RELATED GAMES ===== */
+.related-section {
+  padding: 70px 0 80px;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border-light);
+  transition: background var(--ease);
+}
+.related-card {
+  background: var(--bg-card);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: all var(--bounce);
+  text-decoration: none;
+  display: block;
+}
+.related-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 16px 40px var(--shadow-hover);
+  border-color: var(--red);
+}
+.related-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.related-card:hover img { transform: scale(1.06); }
+.related-card-body {
+  padding: 18px;
+}
+.related-card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.related-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.related-genre {
+  background: linear-gradient(135deg, var(--red), var(--red-light));
+  color: white;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.related-rating {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .details-hero { height: 340px; }
+  .gallery-slide img { height: 300px; }
+}
+@media (max-width: 768px) {
+  .details-hero { height: 280px; }
+  .details-hero-title { font-size: 2.5rem; }
+  .info-card { padding: 24px; }
+  .detail-btn-group { flex-direction: column; }
+  .detail-fav-btn, .btn-nintendo { width: 100%; justify-content: center; }
+  .gallery-slide img { height: 220px; }
+  .gallery-btn { width: 40px; height: 40px; font-size: 0.9rem; }
+}
+@media (max-width: 576px) {
+  .details-hero { height: 240px; }
+  .details-hero-title { font-size: 2rem; }
+  .gallery-slide img { height: 180px; }
+  .section-title { font-size: 1.8rem; }
+  .info-card { padding: 18px; }
+}

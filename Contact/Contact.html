@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
+    <title>Contact Us</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts — Oswald (hero title, mixed case), Barlow (body), Bebas Neue (prices/accents) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../Contact/contact.css">
+    <link rel="stylesheet" href="../Shared/shared.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg custom-navbar shadow-sm">
+        <div class="container">
+
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../Home/index.html">
+                <img src="../Shared/images/logo.png" alt="Nintendo Logo" width="40" height="40" class="me-2">
+                Nintendo
+            </a>
+
+            <div class="ms-auto d-flex align-items-center gap-2 me-2">
+
+                <a href="../Favourite/favourite.html" class="nav-icon-btn" title="My Favourites">
+                    <i class="bi bi-heart-fill"></i>
+                    <span class="nav-badge fav-badge-count" style="display:none;">0</span>
+                </a>
+
+                <a href="../Cart/cart.html" class="nav-icon-btn" title="My Cart">
+                    <i class="bi bi-cart-fill"></i>
+                    <span class="nav-badge cart-badge-count" style="display:none;">0</span>
+                </a>
+
+                <button id="darkModeToggle" class="dark-toggle" title="Toggle Dark Mode">
+                    <i class="bi bi-moon-fill" id="themeIcon"></i>
+                </button>
+
+                <button id="authNavBtn" class="ms-1"></button>
+
+                <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="../Home/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../About/about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../Consoles/consoles.html">Consoles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../Accessories/accessories.html">Accessories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../Games/games.html">Games</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../News/news.html">News</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../Contact/contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <!-- ============ COOKIE CONSENT BANNER ============ -->
+    <div id="cookieBanner" class="cookie-banner" style="display:none;">
+        <div class="container d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3 py-3">
+            <p class="mb-0 small"><i class="bi bi-shield-lock me-2"></i>We use cookies to remember your preferences,
+                wishlist,
+                and recently viewed products. By continuing, you agree to our cookie policy.</p>
+            <div class="d-flex gap-2 flex-shrink-0">
+                <button class="btn btn-sm btn-light fw-bold" id="cookieAccept">Accept All</button>
+                <button class="btn btn-sm btn-outline-light fw-bold" id="cookieDecline">Decline</button>
+            </div>
+        </div>
+    </div>
+    <main>
+        <section id="contact-form" class="section-fluid container">
+
+            <div id="consoleWrapper" class="is-hidden">
+                <div class="switch-body">
+                    <div class="joycon joycon-l">
+                        <div class="analog-stick mt-6"></div>
+                        <div class="joycon-button-grid">
+                            <div class="joycon-button"><span class="material-symbols-outlined">keyboard_arrow_up</span>
+                            </div>
+                            <div class="joycon-button"><span
+                                    class="material-symbols-outlined">keyboard_arrow_right</span></div>
+                            <div class="joycon-button"><span
+                                    class="material-symbols-outlined">keyboard_arrow_left</span></div>
+                            <div class="joycon-button"><span
+                                    class="material-symbols-outlined">keyboard_arrow_down</span></div>
+                        </div>
+                        <div class="joycon-dot mt-auto"></div>
+                    </div>
+
+                    <div class="switch-screen">
+                        <div class="switch-screen-inner switch-scroll">
+                            <div class="text-center form-header">
+                                <h1 class="section-title" style="margin-bottom:0">Contact Us<span
+                                        style="color: black;"></span></colgroup>
+                                </h1>
+                                <p>Fill out the form and we'll get back to you within 24 hours.</p>
+                            </div>
+                            <div id="consoleFormSlot"></div>
+                        </div>
+                    </div>
+
+                    <div class="joycon joycon-r">
+                        <div class="joycon-button-grid">
+                            <div class="joycon-button text">X</div>
+                            <div class="joycon-button text">A</div>
+                            <div class="joycon-button text">Y</div>
+                            <div class="joycon-button text">B</div>
+                        </div>
+                        <div class="analog-stick mb-6"></div>
+                        <div class="joycon-dot mb-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="standaloneWrapper">
+                <div class="standalone-form-card">
+                    <div class="text-center form-header">
+                        <div class="form-header-icon"><span class="material-symbols-outlined">mail</span></div>
+                        <h1 class="section-title" style="margin-bottom:0">Contact Us</h1>
+                        <p>Have a question or need help? Fill out the form below and we'll get back to you within 24
+                            hours.</p>
+                    </div>
+                    <div id="standaloneFormSlot"></div>
+                </div>
+            </div>
+
+            <div id="formContainer">
+                <form id="contactForm" action="https://formspree.io/f/mlgadwzq" method="POST" class="form-group"
+                    novalidate>
+                    <div class="form-field">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" required minlength="2"
+                            placeholder="Enter your full name" autocomplete="name" />
+                        <p class="error-msg is-hidden"></p>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">E-mail</label>
+                        <input id="email" name="email" type="email" required placeholder="name@example.com"
+                            autocomplete="email" />
+                        <p class="error-msg is-hidden"></p>
+                    </div>
+                    <div class="form-field">
+                        <label for="topic">Topic</label>
+                        <select id="topic" name="topic" required>
+                            <option value="" disabled selected>Select a topic</option>
+                            <option value="technical">Technical Support</option>
+                            <option value="account">Account & Billing</option>
+                            <option value="warranty">Warranty & Repairs</option>
+                            <option value="feedback">General Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <p class="error-msg is-hidden"></p>
+                    </div>
+                    <div class="form-field">
+                        <label for="message">Message</label>
+                        <span id="charCount" class="char-count">0 / 2000</span>
+                        <textarea id="message" name="message" required minlength="10" maxlength="2000"
+                            placeholder="Describe how we can help you..."></textarea>
+                        <p class="error-msg is-hidden"></p>
+                    </div>
+                    <button id="submitBtn" type="submit" class="btn-submit">
+                        <span id="submitText">Submit Request</span>
+                        <span id="submitSpinner" class="spinner is-hidden"></span>
+                    </button>
+                </form>
+            </div>
+
+        </section>
+
+        <section id="info-cards" class="section-fluid container">
+            <h2 class="section-title text-center reveal">Other Ways to Reach Us</h2>
+            <div class="info-grid">
+
+                <div class="info-card reveal" style="--card-color: #FF3C28">
+                    <div class="info-icon"><span class="material-symbols-outlined">location_on</span></div>
+                    <h3>Location</h3>
+                    <p>11-1 Hokotate-cho, Kamitoba,<br>Minami-ku, Kyoto 601-8501, Japan</p>
+                    <a href="https://maps.google.com/?q=11-1+Hokotate-cho+Kamitoba+Minami-ku+Kyoto+601-8501+Japan"
+                        target="_blank" rel="noopener noreferrer" class="info-btn">
+                        <span class="material-symbols-outlined">open_in_new</span>Open in Maps
+                    </a>
+                </div>
+
+                <div class="info-card reveal reveal-delay-1" style="--card-color: #0AB9E6">
+                    <div class="info-icon"><span class="material-symbols-outlined">call</span></div>
+                    <h3>Phone</h3>
+                    <div class="hours">
+                        <p><span>1 (800) 255-3700</span></p>
+                        <span class="tz">Intl: +1 (425) 558-7078</span>
+                    </div>
+                    <a href="tel:18002553700" class="info-btn">
+                        <span class="material-symbols-outlined">call</span>Call Now
+                    </a>
+                </div>
+
+                <div class="info-card reveal reveal-delay-2" style="--card-color: #E6FF00; --btn-text-hover: #1A1A1A">
+                    <div class="info-icon"><span class="material-symbols-outlined">fax</span></div>
+                    <h3>Fax</h3>
+                    <p>(425) 882-3585</p>
+                    <button onclick="copyToClipboard('(425) 882-3585')" class="info-btn">
+                        <span class="material-symbols-outlined">content_copy</span>Copy Number
+                    </button>
+                </div>
+
+                <div class="info-card reveal reveal-delay-3" style="--card-color: #1EDC00">
+                    <div class="info-icon"><span class="material-symbols-outlined">schedule</span></div>
+                    <h3>Hours</h3>
+                    <div class="hours">
+                        <p><span>EN/ES/PT:</span> 6am – 7pm</p>
+                        <p><span>FR:</span> 7am – 4pm</p>
+                        <span class="tz">Pacific Time (PT)</span>
+                    </div>
+                    <a href="tel:18002553700" class="info-btn">
+                        <span class="material-symbols-outlined">call</span>Call Support
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="faq-section" class="section-fluid container"
+            style="background: #fff; padding-left: 1.5rem; padding-right: 1.5rem;">
+            <h2 class="section-title text-center reveal">Frequently Asked Questions</h2>
+            <div class="faq-wrapper reveal">
+
+                <div class="faq-item">
+                    <button onclick="toggleFaq(this)" class="faq-toggle" aria-expanded="false">
+                        <span>How long does it take to get a response?</span>
+                        <span class="material-symbols-outlined faq-chevron">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We typically respond within 24–48 business hours. For urgent technical issues, calling our
+                            support line directly is recommended.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button onclick="toggleFaq(this)" class="faq-toggle" aria-expanded="false">
+                        <span>What information should I include?</span>
+                        <span class="material-symbols-outlined faq-chevron">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Include your product model, serial number, a detailed description, and any troubleshooting
+                            steps you've already taken.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button onclick="toggleFaq(this)" class="faq-toggle" aria-expanded="false">
+                        <span>How do I check my warranty status?</span>
+                        <span class="material-symbols-outlined faq-chevron">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Log into your Nintendo account and navigate to registered products. Standard warranty covers
+                            12 months from purchase.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button onclick="toggleFaq(this)" class="faq-toggle" aria-expanded="false">
+                        <span>Can I get a refund for a digital purchase?</span>
+                        <span class="material-symbols-outlined faq-chevron">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Digital purchases are generally non-refundable, but exceptions may be made case-by-case.
+                            Contact support with your order details.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <div id="authModal" class="auth-modal-overlay">
+            <div class="auth-modal-box">
+                <button class="auth-modal-close" id="closeAuthModal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+
+                <div id="loginBox">
+                    <div class="auth-form-title">LOGIN</div>
+                    <form id="loginForm">
+                        <div class="auth-group">
+                            <label>Username</label>
+                            <input type="text" id="loginUsername" placeholder="Enter username" required>
+                        </div>
+                        <div class="auth-group">
+                            <label>Password</label>
+                            <input type="password" id="loginPassword" placeholder="Enter password" required>
+                        </div>
+                        <button type="submit" class="auth-submit">Sign In</button>
+                    </form>
+                    <div class="auth-switch">No account? <a href="#" id="showSignup">Sign up</a></div>
+                </div>
+
+                <div id="signupBox" style="display:none;">
+                    <div class="auth-form-title">SIGN UP</div>
+                    <form id="signupForm">
+                        <div class="auth-group">
+                            <label>Username</label>
+                            <input type="text" id="signupUsername" placeholder="Choose a username" required>
+                        </div>
+                        <div class="auth-group">
+                            <label>Password</label>
+                            <input type="password" id="signupPassword" placeholder="Create a password" required>
+                        </div>
+                        <div class="auth-group">
+                            <label>Confirm Password</label>
+                            <input type="password" id="confirmPassword" placeholder="Repeat password" required>
+                        </div>
+                        <button type="submit" class="auth-submit">Create Account</button>
+                    </form>
+                    <div class="auth-switch">Have an account? <a href="#" id="showLogin">Login</a></div>
+                </div>
+            </div>
+        </div>
+        <section id="community" class="section-fluid container bg-surface-warm text-center">
+            <h2 class="section-title reveal" style="margin-bottom: 0.5rem;">Join the Nintendo Community</h2>
+            <p class="reveal" style="color: var(--on-surface-muted); font-size: 0.875rem;">Stay connected for news,
+                updates, and events.</p>
+
+            <div class="social-flex">
+                <a class="social-item yt reveal" href="https://www.youtube.com/nintendo" target="_blank"
+                    aria-label="YouTube">
+                    <div class="social-ring">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </div>
+                    <span>YouTube</span>
+                </a>
+
+                <a class="social-item fb reveal reveal-delay-1" href="https://www.facebook.com/Nintendo" target="_blank"
+                    aria-label="Facebook">
+                    <div class="social-ring">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </div>
+                    <span>Facebook</span>
+                </a>
+
+                <a class="social-item ig reveal reveal-delay-2" href="https://www.instagram.com/nintendo"
+                    target="_blank" aria-label="Instagram">
+                    <div class="social-ring">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg>
+                    </div>
+                    <span>Instagram</span>
+                </a>
+
+                <a class="social-item dc reveal reveal-delay-3" href="https://discord.gg/nintendo" target="_blank"
+                    aria-label="Discord">
+                    <div class="social-ring">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+                        </svg>
+                    </div>
+                    <span>Discord</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="custom-footer mt-5">
+    <div class="container-fluid footer-top px-5">
+      <div class="row gy-4 justify-content-between">
+        <div class="col-lg-4 col-md-12">
+          <div class="footer-brand d-flex align-items-center mb-3">
+            <img src="../Shared/images/logo.png" alt="Nintendo Logo" width="50" height="50" class="me-2">
+            <h3 class="mb-0">NINTENDO</h3>
+          </div>
+          <p class="footer-text">
+            Bringing smiles to faces around the world through dedicated gaming experiences and beloved characters.
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-heading">NAVIGATE</h5>
+          <ul class="footer-links">
+            <li><a href="../Home/index.html">Home Page</a></li>
+            <li><a href="../Consoles/consoles.html">Consoles</a></li>
+            <li><a href="../Accessories/accessories.html">Accessories</a></li>
+            <li><a href="../Games/games.html">All Games</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-heading">OTHERS</h5>
+          <ul class="footer-links">
+            <li><a href="../News/news.html">Latest News</a></li>
+            <li><a href="../Contact/contact.html">Contact Us</a></li>
+            <li><a href="../Favourite/favourite.html">My Favourite</a></li>
+            <li><a href="../Cart/cart.html">My Cart</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-12">
+          <h5 class="footer-heading">CONNECT</h5>
+          <div class="social-icons">
+            <a href="https://x.com/NintendoAmerica" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/nintendoamerica/" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/c/nintendo" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="https://discord.com/invite/nintendo" title="Discord"><i class="bi bi-discord"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="mb-0">© 2026 Nintendo Website Project</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="https://www.nintendo.com/us/terms-of-use/?srsltid=AfmBOorfR5Cqtw0SzZcCsMF5edbvEN6H8uKee9dxSR7cEiwUHdr1m0Hb"
+            class="bottom-link">Terms of Service</a>
+          <span class="mx-2">|</span>
+          <a href="https://www.nintendo.com/us/privacy-policy/" class="bottom-link">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <div id="successModal" class="modal-backdrop" aria-hidden="true" role="dialog">
+        <div class="modal-content">
+            <div class="modal-icon"><span class="material-symbols-outlined"
+                    style="font-size:inherit">check_circle</span></div>
+            <h3 class="modal-title">Request Sent!</h3>
+            <p class="modal-text">Thank you for reaching out. Our team will respond within 24–48 hours.</p>
+            <button onclick="closeModal()" class="modal-btn">Got It</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast" role="alert">
+        <span class="material-symbols-outlined" id="toastIcon">check_circle</span>
+        <span id="toastText">Copied!</span>
+    </div>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <span class="material-symbols-outlined">keyboard_arrow_up</span>
+    </button>
+
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery 4 -->
+    <script src="https://code.jquery.com/jquery-4.0.0-beta.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../Contact/contact.js"></script>
+    <script src="../Shared/shared.js"></script>
+</body>
+
+
+</html>
