@@ -1,8 +1,10 @@
 /* ============================================
-   CONSOLES.JS — Nintendo Console Page
-   Powered by jQuery 4 + Bootstrap 5
-   Features: Cookie Consent, Wishlist (localStorage),
-   Recently Viewed (sessionStorage), Filter Preference (cookie)
+  CONSOLES.JS — Nintendo Console Page
+  Powered by jQuery 4 + Bootstrap 5
+  Features: Cookie Consent, Wishlist (localStorage),
+  Recently Viewed (sessionStorage), Filter Preference (cookie)
+  [UPDATED] Dynamic product fetching via REST API
+  [UPDATED] Direct social share buttons in overlay
    ============================================ */
 
 $(function () {
@@ -171,9 +173,6 @@ $(function () {
     showToast('Wishlist cleared.');
   });
 
-  // Init wishlist UI
-  updateWishlistUI();
-
   // =======================================================
   //  3. RECENTLY VIEWED — sessionStorage
   // =======================================================
@@ -224,120 +223,10 @@ $(function () {
   }
 
   // =======================================================
-  //  PRODUCT DATA CATALOG — for overlay detail pages
+  //  PRODUCT DATA CATALOG — Populated from REST API
   // =======================================================
-  const productCatalog = {
-    'switch-2': {
-      name: 'Nintendo Switch 2',
-      price: 'RM 2,488',
-      badge: 'LATEST RELEASE',
-      badgeClass: '',
-      description: 'Nintendo Switch 2 redefines the boundaries of hybrid gaming, combining the freedom of a handheld with the raw performance of a high-end home console. Engineered for the next generation of adventures, it brings your favorite worlds to life while maintaining the seamless "pick up and play" versatility that defined its predecessor.',
-      specs: [
-        'Custom Nvidia&trade; Tegra T239 SoC with DLSS enabled',
-        '7.9" FHD LCD touchscreen display (HDR10 supported &amp; 120hz VRR)',
-        'Up to 4K 60fps resolution &amp; 2K 120fps in docked mode',
-        'Magnetic Joy-Con 2 with mouse-style controls',
-        'Built-in GameChat voice &amp; video chat',
-        'Backward compatible with Nintendo Switch games',
-        '12GB LPDDR5X RAM',
-        '256GB UFS internal storage (expandable via microSD)'
-      ],
-      buyUrl: 'https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099',
-      illustration: 'switch2',
-      imageUrl: '/Consoles/Images/Nintendo Switch 2 Image 1.png'
-    },
-    'switch-2-mk-bundle': {
-      name: 'Switch 2 + Mario Kart World Bundle',
-      price: 'RM 2,599',
-      badge: 'Bundle',
-      badgeClass: 'badge-bundle',
-      description: 'Get everything you need to start racing on day one. This bundle includes the Nintendo Switch 2 console plus a digital download code for Mario Kart World — the latest entry in the beloved racing series featuring seamlessly connected open-world tracks, the new Knockout Tour mode, Free Roam exploration, and support for mouse-style Joy-Con steering.',
-      specs: [
-        'Nintendo Switch 2 console included',
-        'Digital copy of Mario Kart World (RM 398 value)',
-        'Open-world connected tracks &amp; Free Roam mode',
-        'Knockout Tour — new competitive race format',
-        'Joy-Con 2 mouse-style steering support',
-        'Online multiplayer via Nintendo Switch Online'
-      ],
-      buyUrl: 'https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099',
-      illustration: 'switch2',
-      imageUrl: '/Consoles/Images/Nintendo Switch 2 Mario Image 2.png'
-    },
-    'switch-oled': {
-      name: 'Nintendo Switch — OLED Model',
-      price: 'RM 1,288',
-      badge: 'Classic',
-      badgeClass: 'badge-classic',
-      description: 'Experience your favorite Nintendo games on a vibrant 7-inch OLED screen with vivid colors and crisp contrast. The OLED Model features a wide adjustable stand for tabletop play, a dock with a wired LAN port for stable online connections, 64GB of internal storage, and enhanced audio for a richer sound experience.',
-      specs: [
-        '7-inch OLED screen with vivid colors',
-        'Wide adjustable stand for tabletop mode',
-        '64GB internal storage',
-        'Dock with wired LAN port included',
-        'Enhanced audio speakers',
-        'Compatible with all Nintendo Switch games'
-      ],
-      buyUrl: 'https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099',
-      illustration: 'oled',
-      imageUrl: '/Consoles/Images/Nintendo Switch Oled Image 2.png'
-    },
-    'switch-lite': {
-      name: 'Nintendo Switch Lite',
-      price: 'RM 838',
-      badge: 'Handheld',
-      badgeClass: 'badge-handheld',
-      description: 'A compact, lightweight Nintendo Switch system designed specifically for handheld play. With a sleek, unibody design and integrated controls, the Switch Lite is perfect for gamers on the go. Available in a variety of fun colors. Plays all Nintendo Switch games that support handheld mode.',
-      specs: [
-        '5.5-inch LCD touchscreen',
-        'Lightweight unibody design (275g)',
-        'Built-in controls — no detachable Joy-Cons',
-        'Available in Coral, Yellow, Gray, Turquoise &amp; more',
-        '32GB internal storage (expandable via microSD)',
-        'Plays all handheld-compatible Switch games'
-      ],
-      buyUrl: 'https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099',
-      illustration: 'lite',
-      imageUrl: '/Consoles/Images/Nintendo Switch Lite Image 2.png'
-    },
-    'switch-2-dk-bundle': {
-      name: 'Switch 2 + Donkey Kong Bananza',
-      price: 'RM 2,877',
-      badge: 'Bundle',
-      badgeClass: 'badge-bundle',
-      description: 'Take on a vast underground 3D adventure with this console bundle. Includes the Nintendo Switch 2 system plus a copy of Donkey Kong Bananza — DK\'s brand-new 3D platforming adventure where you smash, throw, and climb your way through a massive interconnected underground world filled with secrets, challenges, and boss battles.',
-      specs: [
-        'Nintendo Switch 2 console included',
-        'Copy of Donkey Kong Bananza (RM 278 value)',
-        'Massive 3D underground adventure world',
-        'Classic DK gameplay — smash, throw &amp; climb',
-        'Supports co-op multiplayer',
-        'Full Switch 2 feature set included'
-      ],
-      buyUrl: 'https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099',
-      illustration: 'switch2',
-      imageUrl: '/Consoles/Images/Donkey Kong Bonanza Game Intro.png'
-    },
-    'switch-oled-splatoon': {
-      name: 'Switch OLED — Splatoon 3 Edition',
-      price: 'RM 1,699',
-      badge: 'Exclusive',
-      badgeClass: 'badge-special',
-      description: 'Stand out from the crowd with this special edition Nintendo Switch OLED Model featuring a Splatoon 3-inspired design. Includes uniquely themed gradient Joy-Con controllers in purple and yellow-green, a custom decorated dock, and a white console body with Splatoon ink-splatter accents. The vibrant 7-inch OLED screen brings every splat to life.',
-      specs: [
-        'Splatoon 3 themed gradient Joy-Cons',
-        'Custom decorated dock with ink splatter design',
-        'White console body with unique accents',
-        '7-inch OLED screen with vivid colors',
-        '64GB internal storage',
-        'Game sold separately'
-      ],
-      buyUrl: 'https://shopee.com.my/nintendo_officialstore?categoryId=100634&entryPoint=ShopByPDP&itemId=43953768099',
-      illustration: 'splatoon',
-      imageUrl: '/Consoles/Images/Nintendo Switch Oled Splatoon 3 2.png'
-    }
-  };
+  let productCatalog = {};
+  let productsArray = [];
 
   // =======================================================
   //  OVERLAY ILLUSTRATION BUILDER
@@ -409,57 +298,57 @@ $(function () {
   // =======================================================
   //  OVERLAY: Open / Close / Populate
   // =======================================================
-  function openOverlay(productId) {
-    const product = productCatalog[productId];
-    if (!product) return;
+function openOverlay(productId) {
+  const product = productCatalog[productId];
+  if (!product) return;
 
-    // Populate overlay content
-    $('#overlayName').text(product.name);
-    $('#overlayPrice').text(product.price);
-    $('#overlayBadge')
-      .text(product.badge)
-      .attr('class', 'overlay-badge ' + (product.badgeClass || ''));
-    $('#overlayDescription').html(product.description);
-    $('#overlayBuyBtn').attr('href', product.buyUrl);
+  // Populate overlay content
+  $('#overlayName').text(product.name);
+  $('#overlayPrice').text(product.price);
+  $('#overlayBadge')
+    .text(product.badge)
+    .attr('class', 'overlay-badge ' + (product.badgeClass || ''));
+  $('#overlayDescription').html(product.description);
+  $('#overlayBuyBtn').attr('href', product.buyUrl);
 
-    // Build specs
-    let specsHtml = '';
-    product.specs.forEach(spec => {
-      specsHtml += `<div class="overlay-spec-item"><i class="bi bi-check-circle-fill"></i><span>${spec}</span></div>`;
-    });
-    $('#overlaySpecs').html(specsHtml);
+  // Build specs
+  let specsHtml = '';
+  product.specs.forEach(spec => {
+    specsHtml += `<div class="overlay-spec-item"><i class="bi bi-check-circle-fill"></i><span>${spec}</span></div>`;
+  });
+  $('#overlaySpecs').html(specsHtml);
 
-    // Build image or fallback illustration
-    const illustrationHtml = buildIllustration(product.illustration || 'switch2');
-    const imageHtml = product.imageUrl
-      ? `<img src="${product.imageUrl}" alt="${product.name}" class="overlay-product-img">`
-      : illustrationHtml;
+  // Build image or fallback illustration - USE detailImageUrl
+  const illustrationHtml = buildIllustration(product.illustration || 'switch2');
+  const imageHtml = product.detailImageUrl
+    ? `<img src="${product.detailImageUrl}" alt="${product.name}" class="overlay-product-img">`
+    : illustrationHtml;
 
-    $('#overlayImageArea').html(imageHtml);
+  $('#overlayImageArea').html(imageHtml);
 
-    // Update wishlist button state
-    const wishlist = getWishlist();
-    const inWishlist = wishlist.some(item => item.id === productId);
-    const $wishBtn = $('#overlayWishBtn');
-    $wishBtn
-      .data('product-id', productId)
-      .toggleClass('wishlisted', inWishlist)
-      .html(inWishlist
-        ? '<i class="bi bi-heart-fill me-1"></i>In Wishlist'
-        : '<i class="bi bi-heart me-1"></i>Add to Wishlist'
-      );
+  // Update wishlist button state
+  const wishlist = getWishlist();
+  const inWishlist = wishlist.some(item => item.id === productId);
+  const $wishBtn = $('#overlayWishBtn');
+  $wishBtn
+    .data('product-id', productId)
+    .toggleClass('wishlisted', inWishlist)
+    .html(inWishlist
+      ? '<i class="bi bi-heart-fill me-1"></i>In Wishlist'
+      : '<i class="bi bi-heart me-1"></i>Add to Wishlist'
+    );
 
-    // Show overlay
-    $('body').addClass('overlay-open');
-    $('#productOverlay').addClass('active');
+  // Show overlay
+  $('body').addClass('overlay-open');
+  $('#productOverlay').addClass('active');
 
-    // Track as recently viewed
-    addRecentlyViewed({
-      id: productId,
-      name: product.name,
-      price: product.price
-    });
-  }
+  // Track as recently viewed
+  addRecentlyViewed({
+    id: productId,
+    name: product.name,
+    price: product.price
+  });
+}
 
   function closeOverlay() {
     $('#productOverlay').removeClass('active');
@@ -511,14 +400,53 @@ $(function () {
     updateWishlistUI();
   });
 
-    $(document).on('click', '.share-product-btn', function(e) {
+  // =======================================================
+  //  DIRECT SOCIAL SHARE BUTTONS (Overlay)
+  // =======================================================
+  $(document).on('click', '.share-facebook, .share-x, .share-reddit', function(e) {
+    e.preventDefault();
+    const platform = $(this).data('platform');
+    const productId = $('#overlayWishBtn').data('product-id');
+    const product = productCatalog[productId];
+    if (!product) return;
+
+    const shareUrl = `${window.location.origin}${window.location.pathname}?product=${productId}`;
+    const shareText = `Check out the ${product.name} on Nintendo! ${product.price}`;
+    let popupUrl = '';
+
+    if (platform === 'facebook') {
+      popupUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+    } else if (platform === 'x') {
+      popupUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+    } else if (platform === 'reddit') {
+      popupUrl = `https://www.reddit.com/submit?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(product.name)}`;
+    }
+
+    if (popupUrl) {
+      window.open(popupUrl, '_blank', 'width=600,height=400,noopener,noreferrer');
+    }
+  });
+
+  $('#overlayCopyLink').on('click', function(e) {
+    e.preventDefault();
+    const productId = $('#overlayWishBtn').data('product-id');
+    const shareUrl = `${window.location.origin}${window.location.pathname}?product=${productId}`;
+    
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      showToast('Link copied to clipboard!');
+    }).catch(() => {
+      showToast('Unable to copy link.');
+    });
+  });
+
+  // Generic share button (for cards) - kept for fallback
+  $(document).on('click', '.share-product-btn', function(e) {
     e.preventDefault();
     e.stopPropagation();
     const $btn = $(this);
-    const productId = $btn.data('product-id');     // Use product ID
+    const productId = $btn.data('product-id');
     const productName = $btn.data('product-name');
 
-    // Build the full URL to share (current page + ?product=id)
     const shareUrl = `${window.location.origin}${window.location.pathname}?product=${productId}`;
 
     if (navigator.share) {
@@ -536,7 +464,7 @@ $(function () {
     }
   });
 
-    // =======================================================
+  // =======================================================
   //  AUTO-OPEN OVERLAY FROM URL PARAMETER
   // =======================================================
   function getProductIdFromURL() {
@@ -547,16 +475,120 @@ $(function () {
   function openProductFromURL() {
     const productId = getProductIdFromURL();
     if (productId && productCatalog[productId]) {
-      // Small delay to ensure DOM is ready
       setTimeout(() => openOverlay(productId), 100);
-      // Clean the URL without reloading the page
       const newUrl = window.location.pathname;
       window.history.replaceState({}, document.title, newUrl);
     }
   }
 
-  // Call on page load
-  openProductFromURL();
+  // =======================================================
+  //  REST API: Fetch Consoles and Render Cards
+  // =======================================================
+  function fetchConsolesFromAPI() {
+    $('#productsLoading').show();
+    $('#productsError').hide();
+    $('#productGrid').empty();
+
+    $.ajax({
+      url: '/api/consoles.json',
+      method: 'GET',
+      dataType: 'json',
+      timeout: 10000,
+      success: function (response) {
+        // Expected: array of product objects
+        productsArray = response.map(p => ({
+          ...p,
+          category: p.category || getCategoryFromId(p.id)
+        }));
+        buildProductCatalog(productsArray);
+        renderProductCards(productsArray);
+        $('#productsLoading').hide();
+        
+        // Initialize features that depend on product catalog
+        initFilters();
+        updateWishlistUI();
+        renderRecentlyViewed();
+        openProductFromURL();
+        observeProductCards();
+      },
+      error: function (xhr, status, error) {
+        console.error('API Error:', status, error);
+        $('#productsLoading').hide();
+        $('#productsError').show();
+        $('#errorMessage').text('Unable to load products. Please refresh the page or try again later.');
+        $('#productGrid').empty();
+      }
+    });
+  }
+
+  // Helper to assign category from ID
+  function getCategoryFromId(id) {
+    if (id.includes('switch-2')) return 'switch2';
+    if (id.includes('bundle')) return 'bundle';
+    if (id.includes('oled')) return 'switch';
+    if (id.includes('lite')) return 'switch';
+    if (id.includes('splatoon')) return 'promo';
+    return 'switch';
+  }
+
+  // Build productCatalog object keyed by ID
+function buildProductCatalog(products) {
+  productCatalog = {};
+  products.forEach(p => {
+    productCatalog[p.id] = {
+      name: p.name,
+      price: p.price,
+      badge: p.badge || 'New',
+      badgeClass: p.badgeClass || '',
+      description: p.description,
+      specs: p.specs || [],
+      buyUrl: p.buyUrl || '#',
+      illustration: p.illustration || 'switch2',
+      cardImageUrl: p.cardImageUrl || '',
+      detailImageUrl: p.detailImageUrl || p.cardImageUrl || ''
+    };
+  });
+}
+
+  // Render product cards from array
+function renderProductCards(products) {
+  const $grid = $('#productGrid');
+  $grid.empty();
+
+  products.forEach(product => {
+    const shortDesc = product.shortDesc || product.description.substring(0, 100) + '...';
+    const col = $(`
+      <div class="col product-col" data-category="${product.category}">
+        <div class="card product-card h-100" 
+            data-product-id="${product.id}"
+            data-product-name="${product.name}"
+            data-product-price="${product.price}">
+          <div class="card-img-top-wrapper">
+            <div class="card-img-placeholder">
+              <img src="${product.cardImageUrl}" alt="${product.name}" class="card-product-img">
+            </div>
+            <span class="card-badge ${product.badgeClass || 'badge-new'}">${product.badge}</span>
+            <button class="wishlist-btn" data-product-id="${product.id}" aria-label="Add to wishlist">
+              <i class="bi bi-heart"></i>
+            </button>
+            <button class="share-product-btn" data-product-id="${product.id}" data-product-name="${product.name}" aria-label="Share product">
+              <i class="bi bi-share-fill"></i>
+            </button>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${product.name}</h5>
+            <p class="card-text flex-grow-1">${shortDesc}</p>
+            <div class="d-flex align-items-center justify-content-between mt-auto pt-2">
+              <span class="card-price">${product.price}</span>
+              <a href="#" class="card-link-btn" data-product-id="${product.id}">View Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `);
+    $grid.append(col);
+  });
+}
 
   // =======================================================
   //  TRIGGER: "View Details" on product cards → open overlay
@@ -576,38 +608,35 @@ $(function () {
     openOverlay(productId);
   });
 
-  // Init recently viewed
-  renderRecentlyViewed();
-
   // =======================================================
   //  4. FILTER — saves preference in cookie
   // =======================================================
-  const $filterBtns = $('#filterBar .filter-btn');
-  const $productCols = $('.product-col');
+  function initFilters() {
+    const $filterBtns = $('#filterBar .filter-btn');
+    const $productCols = $('.product-col');
 
-  // Restore saved filter from cookie
-  const savedFilter = Cookies.get('nin_filter_pref');
-  if (savedFilter && isStorageAllowed()) {
-    applyFilter(savedFilter);
-    $filterBtns.removeClass('active');
-    $filterBtns.filter(`[data-filter="${savedFilter}"]`).addClass('active');
+    const savedFilter = Cookies.get('nin_filter_pref');
+    if (savedFilter && isStorageAllowed()) {
+      applyFilter(savedFilter);
+      $filterBtns.removeClass('active');
+      $filterBtns.filter(`[data-filter="${savedFilter}"]`).addClass('active');
+    }
+
+    $filterBtns.off('click').on('click', function () {
+      $filterBtns.removeClass('active');
+      $(this).addClass('active');
+
+      const filter = $(this).data('filter');
+      applyFilter(filter);
+
+      if (isStorageAllowed()) {
+        Cookies.set('nin_filter_pref', filter, 7);
+      }
+    });
   }
 
-  $filterBtns.on('click', function () {
-    $filterBtns.removeClass('active');
-    $(this).addClass('active');
-
-    const filter = $(this).data('filter');
-    applyFilter(filter);
-
-    // Save filter preference in cookie
-    if (isStorageAllowed()) {
-      Cookies.set('nin_filter_pref', filter, 7);
-    }
-  });
-
   function applyFilter(filter) {
-    $productCols.each(function () {
+    $('.product-col').each(function () {
       const $col = $(this);
       const category = $col.data('category');
 
@@ -634,7 +663,6 @@ $(function () {
     const scrollLeft = el.scrollLeft;
     const maxScroll = el.scrollWidth - el.clientWidth;
 
-    // Show arrows only if content overflows
     if (maxScroll <= 2) {
       $arrowLeft.addClass('d-none');
       $arrowRight.addClass('d-none');
@@ -665,7 +693,6 @@ $(function () {
   $scrollArea.on('scroll', updateFilterArrows);
   $(window).on('resize', updateFilterArrows);
 
-  // Initial check
   setTimeout(updateFilterArrows, 100);
 
   // =======================================================
@@ -673,7 +700,6 @@ $(function () {
   // =======================================================
   const videoCarousel = document.getElementById('videoCarousel');
 
-  // Get the video element inside a slide (if any)
   function getVideoInSlide(slideEl) {
     if (slideEl && slideEl.dataset.hasVideo === 'true') {
       return slideEl.querySelector('.slide-video');
@@ -681,26 +707,21 @@ $(function () {
     return null;
   }
 
-  // Pause all videos
   function pauseAllVideos() {
     $(videoCarousel).find('.slide-video').each(function () {
       this.pause();
     });
   }
 
-  // Autoplay the first video on page load
   const firstVideo = getVideoInSlide(videoCarousel.querySelector('.carousel-item.active'));
   if (firstVideo) {
     const playPromise = firstVideo.play();
     if (playPromise !== undefined) {
-      playPromise.catch(function () {
-        // Autoplay blocked by browser — leave it paused
-      });
+      playPromise.catch(function () {});
     }
     $('#pauseIcon').attr('class', 'bi bi-pause-fill');
   }
 
-  // Pause button — controls the active slide's video
   $('#pauseBtn').on('click', function () {
     const activeItem = videoCarousel.querySelector('.carousel-item.active');
     const video = getVideoInSlide(activeItem);
@@ -716,12 +737,10 @@ $(function () {
     }
   });
 
-  // On slide change — pause outgoing video
   $(videoCarousel).on('slide.bs.carousel', function () {
     pauseAllVideos();
   });
 
-  // On slide arrived — autoplay the new slide's video
   $(videoCarousel).on('slid.bs.carousel', function (e) {
     const newItem = e.relatedTarget;
     const video = getVideoInSlide(newItem);
@@ -741,7 +760,6 @@ $(function () {
     rootMargin: '0px 0px -40px 0px'
   };
 
-  // Sections fade-up
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -755,19 +773,20 @@ $(function () {
     sectionObserver.observe(this);
   });
 
-  // Product cards staggered reveal
-  const cardObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        $(entry.target).addClass('visible');
-      }
-    });
-  }, { threshold: 0.1 });
+  function observeProductCards() {
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          $(entry.target).addClass('visible');
+        }
+      });
+    }, { threshold: 0.1 });
 
-  $('.product-card').each(function (i) {
-    $(this).css('transition-delay', `${i * 0.08}s`);
-    cardObserver.observe(this);
-  });
+    $('.product-card').each(function (i) {
+      $(this).css('transition-delay', `${i * 0.08}s`);
+      cardObserver.observe(this);
+    });
+  }
 
   // =======================================================
   //  7. VISIT COUNTER — cookie based
@@ -777,7 +796,6 @@ $(function () {
     visits++;
     Cookies.set('nin_visit_count', visits.toString(), 365);
 
-    // Welcome-back toast on return visits
     if (visits > 1 && isStorageAllowed()) {
       setTimeout(() => {
         showToast(`Welcome back to Nintendo! Visit #${visits}.`);
@@ -810,5 +828,10 @@ $(function () {
       console.warn('localStorage unavailable:', e);
     }
   })();
+
+  // =======================================================
+  //  KICK OFF: Fetch products from REST API
+  // =======================================================
+  fetchConsolesFromAPI();
 
 });

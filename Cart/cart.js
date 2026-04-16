@@ -1,15 +1,3 @@
-/**
- * cart.js
- * =======
- * Handles the Cart page.
- *
- * STORAGE USED:
- *   localStorage "cart" → array of cart items
- *   Format: [{ game, title, image, price, qty }, ...]
- *
- *   Cookie "username" → checked on checkout to require login
- */
-
 /* ── Read / save cart ────────────────────────────────────── */
 
 function readCart() {

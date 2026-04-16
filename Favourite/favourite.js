@@ -1,23 +1,4 @@
-/**
- * favourite.js
- * ============
- * Handles the Favourites page.
- *
- * STORAGE USED:
- *   localStorage "favorites"  → array of game name keys  e.g. ["ZeldaBOTW","MarioOdyssey"]
- *   localStorage "cart"       → array of cart item objects
- *
- * HOW FAVOURITES WORK:
- *   1. Your existing games.js / game-details.js writes to localStorage "favorites"
- *      when the user clicks the heart button.
- *   2. This page reads that same key and shows the saved games.
- *   3. No data is duplicated — both pages share one localStorage entry.
- */
-
-/* ── Game data ──────────────────────────────────────────────
-   Must match the game names and prices in your games.js.
-   Add price / salePrice / stock here.
-────────────────────────────────────────────────────────── */
+/* ── Game data ───*/
 const GAME_DATA = {
   AnimalCrossing: {
     title: "Animal Crossing: New Horizons",
@@ -145,9 +126,9 @@ function buildPriceHtml(game) {
 /* ── Render all favourite cards ──────────────────────────── */
 
 function renderFavourites() {
-  const keys  = readFavs();                                        // e.g. ["ZeldaBOTW","MarioOdyssey"]
-  const games = keys.map(k => ({ key: k, ...GAME_DATA[k] }))     // attach game data
-                    .filter(g => g.title);                        // skip unknown keys
+  const keys  = readFavs();                                        
+  const games = keys.map(k => ({ key: k, ...GAME_DATA[k] }))     
+                    .filter(g => g.title);                        
 
   /* Update count label */
   document.getElementById("favTotalCount").textContent = games.length;

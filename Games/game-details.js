@@ -1,22 +1,4 @@
-/**
- * game-details.js
- * ===============
- * FIX: Added updateAuthButton() and updateBadges() calls so
- *      the navbar login button text and heart/cart badge
- *      counts display correctly on this page.
- *
- * STORAGE USED:
- *   localStorage   → favorites, recentlyViewed (read + write)
- *   sessionStorage → currentGame (write only — records which
- *                    game was last viewed, resets on tab close)
- *   Cookie         → username (read via getCookie from shared.js)
- */
-
 $(document).ready(function () {
-
-  /* ── FIX: update navbar auth button and badge counts ──── */
-  // shared.js runs on DOMContentLoaded, but calling again here
-  // ensures they're set after jQuery has finished loading.
   if (typeof updateAuthButton === "function") updateAuthButton();
   if (typeof updateBadges    === "function") updateBadges();
 
@@ -151,10 +133,7 @@ $(document).ready(function () {
 
   const game = gameData[gameKey];
 
-  /* ── SESSIONSTORAGE: record current viewed game ───────────
-     Uses sessionStorage so it resets when the tab closes.
-     The profile page and games page can read this temporarily.
-  ────────────────────────────────────────────────────────── */
+  /* ── SESSIONSTORAGE: record current viewed game ─── */
   sessionStorage.setItem("currentGame", gameKey); // SESSIONSTORAGE
 
   /* ── POPULATE PAGE ────────────────────────────────────── */

@@ -865,6 +865,41 @@ body.overlay-open { overflow: hidden; }
 
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+/* ===================== OVERLAY SHARE ROW ===================== */
+.overlay-share-row {
+  border-top: 1px solid var(--nin-gray-200);
+  padding-top: 16px;
+  margin-top: 8px;
+}
+
+.share-label {
+  letter-spacing: 1px;
+  color: var(--nin-gray-400);
+}
+
+.btn-share {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--nin-off-white);
+  border: 1px solid var(--nin-gray-200);
+  color: var(--nin-gray-700);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--nin-transition);
+  padding: 0;
+}
+
+.btn-share:hover {
+  background: var(--nin-red);
+  border-color: var(--nin-red);
+  color: var(--nin-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(230, 0, 18, 0.25);
+}
+
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 991px) {
   .daily-picks-section { padding: 40px 0 36px; text-align: center; }

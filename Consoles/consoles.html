@@ -19,7 +19,7 @@
     rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="../Consoles/consoles.css">
+  <link rel="stylesheet" href="consoles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../Shared/shared.css">
 
@@ -30,7 +30,7 @@
     <div class="container">
 
       <a class="navbar-brand fw-bold d-flex align-items-center" href="../Home/index.html">
-        <img src="../Shared/images/logo.png" alt="Nintendo Logo" width="40" height="40" class="me-2">
+        <img src="../Shared/logo.png" alt="Nintendo Logo" width="40" height="40" class="me-2">
         Nintendo
       </a>
 
@@ -200,182 +200,29 @@
         </button>
       </div>
 
-      <!-- Unified equal-size product cards -->
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="productGrid">
-
-        <!-- Nintendo Switch 2 -->
-        <div class="col product-col" data-category="switch2">
-          <div class="card product-card h-100" data-product-id="switch-2" data-product-name="Nintendo Switch 2"
-            data-product-price="RM 2,488">
-            <div class="card-img-top-wrapper">
-              <div class="card-img-placeholder">
-                <img src="/Consoles/Images/Nintendo Switch 2 Image 2.png" alt="Nintendo Switch 2 (Box)"
-                  class="card-product-img">
-              </div>
-              <span class="card-badge badge-new">Latest Release</span>
-              <button class="wishlist-btn" data-product-id="switch-2" aria-label="Add to wishlist"><i
-                  class="bi bi-heart"></i></button>
-              <!-- Share button -->
-              <button class="share-product-btn" data-product-id="switch-2" data-product-name="Nintendo Switch 2"
-                aria-label="Share product"><i class="bi bi-share-fill"></i></button>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Nintendo Switch 2</h5>
-              <p class="card-text flex-grow-1">Next-gen hybrid console. 7.9" 1080p screen, 4K docked output, magnetic
-                Joy-Con 2 controllers with mouse support.</p>
-              <div class="d-flex align-items-center justify-content-between mt-auto pt-2">
-                <span class="card-price">RM 2,488</span>
-                <a href="#" class="card-link-btn" data-product-id="switch-2">View Details &rarr;</a>
-              </div>
-            </div>
-          </div>
+      <!-- Loading Spinner -->
+      <div id="productsLoading" class="text-center py-5">
+        <div class="spinner-border text-danger" role="status" style="width: 3rem; height: 3rem;">
+          <span class="visually-hidden">Loading consoles...</span>
         </div>
-
-        <!-- Switch 2 + Mario Kart World Bundle -->
-        <div class="col product-col" data-category="bundle">
-          <div class="card product-card h-100" data-product-id="switch-2-mk-bundle"
-            data-product-name="Switch 2 + Mario Kart World" data-product-price="RM 2,599">
-            <div class="card-img-top-wrapper">
-              <div class="card-img-placeholder">
-                <img src="/Consoles/Images/Nintendo Switch 2 Mario Image 1.png"
-                  alt="Nintendo Switch 2 Mario Kart World (Box)" class="card-product-img">
-              </div>
-              <span class="card-badge badge-bundle">Bundle</span>
-              <button class="wishlist-btn" data-product-id="switch-2-mk-bundle" aria-label="Add to wishlist"><i
-                  class="bi bi-heart"></i></button>
-              <!-- Share button -->
-              <button class="share-product-btn" data-product-id="switch-2-mk-bundle"
-                data-product-name="Nintendo Switch 2 + Mario Kart World" aria-label="Share product"><i
-                  class="bi bi-share-fill"></i></button>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Switch 2 + Mario Kart World</h5>
-              <p class="card-text flex-grow-1">Console bundled with a digital copy of Mario Kart World. Race across
-                seamlessly connected tracks on day one.</p>
-              <div class="d-flex align-items-center justify-content-between mt-auto pt-2">
-                <span class="card-price">RM 2,599</span>
-                <a href="#" class="card-link-btn" data-product-id="switch-2-mk-bundle">View Details &rarr;</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Nintendo Switch OLED -->
-        <div class="col product-col" data-category="switch">
-          <div class="card product-card h-100" data-product-id="switch-oled"
-            data-product-name="Nintendo Switch OLED Model" data-product-price="RM 1,288">
-            <div class="card-img-top-wrapper">
-              <div class="card-img-placeholder">
-                <img src="/Consoles/Images/Nintendo Switch Oled Image 1.png" alt="Nintendo Switch Oled (Box)"
-                  class="card-product-img">
-              </div>
-              <span class="card-badge bg-dark">Classic</span>
-              <button class="wishlist-btn" data-product-id="switch-oled" aria-label="Add to wishlist"><i
-                  class="bi bi-heart"></i></button>
-              <!-- Share button -->
-              <button class="share-product-btn" data-product-id="switch-oled"
-                data-product-name="Nintendo Switch - OLED Model" aria-label="Share product"><i
-                  class="bi bi-share-fill"></i></button>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Nintendo Switch — OLED Model</h5>
-              <p class="card-text flex-grow-1">Vibrant 7-inch OLED screen, wide adjustable stand, 64GB internal storage,
-                and wired LAN port in the dock.</p>
-              <div class="d-flex align-items-center justify-content-between mt-auto pt-2">
-                <span class="card-price">RM 1,288</span>
-                <a href="#" class="card-link-btn" data-product-id="switch-oled">View Details &rarr;</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Nintendo Switch Lite -->
-        <div class="col product-col" data-category="switch">
-          <div class="card product-card h-100" data-product-id="switch-lite" data-product-name="Nintendo Switch Lite"
-            data-product-price="RM 838">
-            <div class="card-img-top-wrapper">
-              <div class="card-img-placeholder">
-                <img src="/Consoles/Images/Nintendo Switch Lite Image 1.png" alt="Nintendo Switch Lite (Box)"
-                  class="card-product-img">
-              </div>
-              <span class="card-badge bg-dark">Handheld</span>
-              <button class="wishlist-btn" data-product-id="switch-lite" aria-label="Add to wishlist"><i
-                  class="bi bi-heart"></i></button>
-              <!-- Share button -->
-              <button class="share-product-btn" data-product-id="switch-lite" data-product-name="Nintendo Switch Lite"
-                aria-label="Share product"><i class="bi bi-share-fill"></i></button>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Nintendo Switch Lite</h5>
-              <p class="card-text flex-grow-1">Compact, lightweight, and built for handheld play. Available in multiple
-                vibrant colors. Perfect for on-the-go gaming.</p>
-              <div class="d-flex align-items-center justify-content-between mt-auto pt-2">
-                <span class="card-price">RM 838</span>
-                <a href="#" class="card-link-btn" data-product-id="switch-lite">View Details &rarr;</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Switch 2 + Donkey Kong Bundle -->
-        <div class="col product-col" data-category="bundle">
-          <div class="card product-card h-100" data-product-id="switch-2-dk-bundle"
-            data-product-name="Switch 2 + Donkey Kong Bananza" data-product-price="RM 2,877">
-            <div class="card-img-top-wrapper">
-              <div class="card-img-placeholder">
-                <img src="/Consoles/Images/Nintendo Switch 2 Donkey Kong Bananza 1.png"
-                  alt="Nintendo Switch 2 Donkey Kong Bananza (Box+Game)" class="card-product-img">
-              </div>
-              <span class="card-badge badge-bundle">Bundle</span>
-              <button class="wishlist-btn" data-product-id="switch-2-dk-bundle" aria-label="Add to wishlist"><i
-                  class="bi bi-heart"></i></button>
-              <!-- Share button -->
-              <button class="share-product-btn" data-product-id="switch-2-dk-bundle"
-                data-product-name="Switch 2 + Donkey Kong Bananza" aria-label="Share product"><i
-                  class="bi bi-share-fill"></i></button>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Switch 2 + Donkey Kong Bananza</h5>
-              <p class="card-text flex-grow-1">Console bundled with Donkey Kong Bananza. Smash, throw, and climb through
-                a vast underground 3D adventure.</p>
-              <div class="d-flex align-items-center justify-content-between mt-auto pt-2">
-                <span class="card-price">RM 2,877</span>
-                <a href="#" class="card-link-btn" data-product-id="switch-2-dk-bundle">View Details &rarr;</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Switch OLED Splatoon Edition -->
-        <div class="col product-col" data-category="promo">
-          <div class="card product-card h-100" data-product-id="switch-oled-splatoon"
-            data-product-name="Switch OLED — Splatoon 3 Edition" data-product-price="RM 1,699">
-            <div class="card-img-top-wrapper">
-              <div class="card-img-placeholder">
-                <img src="/Consoles/Images/Nintendo Switch Oled Splatoon 3 1.png"
-                  alt="Nintendo Switch OLED Splatoon 3 (Box)" class="card-product-img">
-              </div>
-              <span class="card-badge badge-promo">Exclusive</span>
-              <button class="wishlist-btn" data-product-id="switch-oled-splatoon" aria-label="Add to wishlist"><i
-                  class="bi bi-heart"></i></button>
-              <!-- Share button -->
-              <button class="share-product-btn" data-product-id="switch-oled-splatoon"
-                data-product-name="Switch OLED - Splatoon 3 Edition" aria-label="Share product"><i
-                  class="bi bi-share-fill"></i></button>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Switch OLED — Splatoon 3 Edition</h5>
-              <p class="card-text flex-grow-1">Special edition OLED console with Splatoon-themed gradient Joy-Cons,
-                custom dock, and unique design accents.</p>
-              <div class="d-flex align-items-center justify-content-between mt-auto pt-2">
-                <span class="card-price">RM 1,699</span>
-                <a href="#" class="card-link-btn" data-product-id="switch-oled-splatoon">View Details &rarr;</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <p class="mt-3 text-muted">Fetching the latest Nintendo consoles...</p>
       </div>
+
+      <!-- Error Message (hidden by default) -->
+      <div id="productsError" class="alert alert-danger d-flex align-items-center mt-4"
+        style="display: none !important;" role="alert">
+        <i class="bi bi-exclamation-triangle-fill fs-4 me-3"></i>
+        <div>
+          <strong>Unable to load products</strong>
+          <p class="mb-0" id="errorMessage">Please refresh the page or try again later.</p>
+        </div>
+        <button class="btn btn-sm btn-outline-danger ms-auto" onclick="location.reload()">
+          <i class="bi bi-arrow-clockwise me-1"></i>Refresh
+        </button>
+      </div>
+
+      <!-- Dynamic Product Grid (populated via REST API) -->
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="productGrid"></div>
     </div>
   </section>
 
@@ -434,6 +281,22 @@
                 <button class="btn btn-nin-wish-overlay" id="overlayWishBtn">
                   <i class="bi bi-heart me-1"></i>Add to Wishlist
                 </button>
+                <!-- ============ DIRECT SHARE BUTTONS ============ -->
+                <div class="overlay-share-row d-flex align-items-center gap-2 mt-3">
+                  <span class="share-label text-uppercase fw-bold">Share:</span>
+                  <button class="btn btn-share share-facebook" data-platform="facebook" title="Share on Facebook">
+                    <i class="bi bi-facebook"></i>
+                  </button>
+                  <button class="btn btn-share share-x" data-platform="x" title="Post on X">
+                    <i class="bi bi-twitter-x"></i>
+                  </button>
+                  <button class="btn btn-share share-reddit" data-platform="reddit" title="Share on Reddit">
+                    <i class="bi bi-reddit"></i>
+                  </button>
+                  <button class="btn btn-share share-copy" id="overlayCopyLink" title="Copy Link">
+                    <i class="bi bi-link-45deg"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -503,7 +366,7 @@
       <div class="row gy-4 justify-content-between">
         <div class="col-lg-4 col-md-12">
           <div class="footer-brand d-flex align-items-center mb-3">
-            <img src="../Shared/images/logo.png" alt="Nintendo Logo" width="50" height="50" class="me-2">
+            <img src="../Shared/images/logo.ico" alt="Nintendo Logo" width="50" height="50" class="me-2">
             <h3 class="mb-0">NINTENDO</h3>
           </div>
           <p class="footer-text">
@@ -558,6 +421,7 @@
       </div>
     </div>
   </footer>
+
 
   <!-- Bootstrap 5 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

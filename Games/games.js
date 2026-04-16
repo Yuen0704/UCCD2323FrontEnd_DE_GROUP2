@@ -1,16 +1,3 @@
-/**
- * games.js
- * ========
- * FIX: Removed duplicate .fav-btn click handler that was
- *      accidentally pasted twice. Now there is exactly ONE
- *      handler that both saves to localStorage AND calls
- *      updateBadges() and showToast().
- *
- * STORAGE USED:
- *   localStorage    → favorites, cart, recentlyViewed, darkMode
- *   sessionStorage  → compareList (temporary, resets on tab close)
- */
-
 $(document).ready(function () {
 
   /* ── GAME DATA (price + stock added) ──────────────────── */
@@ -112,8 +99,6 @@ $(document).ready(function () {
   }
   applyTheme();
 
-  // Dark toggle — shared.js also hooks this, but having it here
-  // ensures it works even if shared.js hasn't loaded yet
   $("#darkModeToggle").on("click", function () {
     isDark = !isDark;
     localStorage.setItem("darkMode", String(isDark));
@@ -541,5 +526,5 @@ $(document).ready(function () {
   renderTopRated();
   renderNewReleases();
   renderRecentlyViewed();
-  updateCompareBar(); // restore compare state from sessionStorage on page load
+  updateCompareBar(); // 
 });

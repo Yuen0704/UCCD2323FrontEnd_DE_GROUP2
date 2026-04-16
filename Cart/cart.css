@@ -1,11 +1,5 @@
-/*
- * cart.css
- * ========
- * Styles ONLY for cart.html.
- * CSS variables come from games.css which is linked before this file.
- */
-
 /* ===== HERO ===== */
+
 .cart-hero {
   background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 60%, #2d0005 100%);
   color: white;

@@ -1,11 +1,3 @@
-/*
- * favourite.css
- * =============
- * Styles ONLY for favourite.html.
- * CSS variables (--red, --bg, --text, etc.) come from games.css
- * which is already linked before this file.
- */
-
 /* ===== HERO ===== */
 .fav-hero {
   background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 60%, #2d0005 100%);
@@ -242,11 +234,6 @@
   transition: all 0.3s ease;
 }
 .fav-remove-btn:hover { border-color: var(--red); color: var(--red); background: var(--red-soft, #fff0f1); }
-
-/* .btn-nintendo already exists in your games.css */
-
-/* ===== EMPTY STATE ===== */
-/* .empty-state styles are injected by shared.js */
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
