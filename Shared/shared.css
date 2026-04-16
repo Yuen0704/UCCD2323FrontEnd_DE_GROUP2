@@ -350,6 +350,8 @@ body {
   background: var(--bg-footer);
   color: white;
   border-top: 4px solid var(--red);
+  position: relative;
+  z-index: 20;
 }
 
 .footer-top { padding: 50px 0 40px; }
@@ -399,6 +401,9 @@ body {
   transition: all var(--ease);
   font-weight: 500;
   font-size: 0.9rem;
+  position: relative;
+  z-index: 21;
+  pointer-events: auto;
 }
 .footer-links a:hover {
   color: var(--red);
