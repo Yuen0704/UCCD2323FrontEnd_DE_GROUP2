@@ -115,7 +115,12 @@ function initAuthModal() {
 
   document.getElementById("authNavBtn")?.addEventListener("click", function () {
     if (getCookie("username")) {
-      window.location.href = "profile.html";
+      const shouldLogout = confirm("You are already loged in.Do you want to log out?");
+      if (shouldLogout) {
+        deleteCookie("username");
+        updateAuthButton();
+        showToast("Logged out successfully.");
+      }
     } else {
       modal.style.display = "flex";
       showLogin();
